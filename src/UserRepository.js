@@ -1,6 +1,6 @@
 class UserRepository {
-  constructor(data) {
-    this.data = data;
+  constructor(userData) {
+    this.userData = userData;
   }
 
   returnUserData(id) {
@@ -10,6 +10,8 @@ class UserRepository {
   returnAverageStepGoal() {
 
   }
+
+
   
 }
 

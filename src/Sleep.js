@@ -1,13 +1,22 @@
-class Sleep {
-  constructor(sleepData) {
-    this.sleepData = sleepData;
+import User from "./User"
+
+class Sleeper {
+  constructor(sleeperData) {
+    this.allSpecificUsersData = allSpecificUsersData; //an array of all the objects that hold one users data.
+    // [{"userID":2,"date":"2019/06/15","hoursSlept":7,"sleepQuality":4.7},
+    // {"userID":2,"date":"2019/06/16","hoursSlept":7.5,"sleepQuality":3.8},
+    // {"userID":2,"date":"2019/06/17","hoursSlept":5.7,"sleepQuality":3},
+    //
+    //
+    //
+    //
+    //
+
+  ]
+
  }
 
-   //HELPER METHOD TO RETURN USER BY ID
-    //filterUserById(id) {
-      //return this.sleepData.filter((user) => user.id === id
-        //this will return an array 
-  //}
+
 
   calculateDailyAverage() {
     //filterUserById(id) 
@@ -31,18 +40,6 @@ class Sleep {
   filterQualityByWeek(id, date) {
      //filterUserById(id) 
      // For a user, their sleep quality each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
-  }
-
-  calculateAllUsersAverageSleepQuality() {
-    //For all users, the average sleep quality
-  }
-  
-  filterUsersSleepQualityAboveThree(week) {
-    // Find all users who average a sleep quality greater than 3 for a given week (7 days) - you should be able to calculate this for any week, not just the latest week
-  }
-
-  findUsersMostHoursSleptByDay(date) {
-    // For a given day (identified by the date), find the users who slept the most number of hours (one or more if they tied)
   }
 
 
