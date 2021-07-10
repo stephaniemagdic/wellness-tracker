@@ -2,7 +2,6 @@ class SleepRepository {
   constructor(sleepData) {
     this.sleepData = sleepData;
  }
-
    ///Below goes in SleepRepositoryClass (METHODS INVOLVES ALL USERS):
    calculateAllUsersAverageSleepQuality() {
     //For all users, the average sleep quality
@@ -19,4 +18,5 @@ class SleepRepository {
    //filterUserById(id) {
       //return this.sleepData.filter((user) => user.id === id
         //this will return an array 
+
   //}

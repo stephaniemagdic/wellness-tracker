@@ -1,50 +1,69 @@
 import User from "./User"
 
-class Sleeper {
-  constructor(sleeperData) {
-    this.allSpecificUsersData = allSpecificUsersData; //an array of all the objects that hold one users data.
+class SleepData {
+  constructor(arrayofSleepUserObjects) {
+    constructor(sleepRepoInstance.filterUserById(id)) {
+  //an array of all the objects that hold one users data.
     // [{"userID":2,"date":"2019/06/15","hoursSlept":7,"sleepQuality":4.7},
     // {"userID":2,"date":"2019/06/16","hoursSlept":7.5,"sleepQuality":3.8},
     // {"userID":2,"date":"2019/06/17","hoursSlept":5.7,"sleepQuality":3},
     //
     //
     //
-    //
-    //
 
-  ]
-
+      this.arrayofSleepUserObjects = arrayofSleepUserObjects;
  }
 
-
-
   calculateDailyAverage() {
-    //filterUserById(id) 
+    //For a user (identified by their userID), the average number of hours slept per day
   }
 
-  filterHoursByDate(id, date) {
-    //filterUserById(id) 
-    //For a user, their sleep quality for a specific day (identified by a date)
+  calculateAverageSleepQuality() {
+
   }
 
-  filterQualityByDate(id, date) {
-  //filterUserById(id) 
-   //For a user, how many hours they slept for a specific day (identified by a date)
+  filterHoursByDate(date) {
+//For a user, how many hours they slept for a specific day (identified by a date)
+
+    //const data = this.arrayofSleepUserObjects.filter((object) => object.date = date);
+
+    //return data.hoursSlept;
   }
 
-  filterHoursByWeek(id, date) {
-  //filterUserById(id) 
+  filterQualityByDate(date) {
+ 
   //For a user, their sleep quality for a specific day (identified by a date)
+    //const data = this.arrayofSleepUserObjects.filter((object) => object.date = date);
+
+    //return data.hoursSlept.sleepQuality;
+
+  }
+
+  filterHoursByWeek(date) {
+    // For a user, how many hours slept each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
+
+      //const data = this.arrayofSleepUserObjects.filter((object) => object.date > date && < object.date = date - 7);
+
+    //return data.map((date) => return date.hoursSlept)
+    
+
+
+
   }
 
   filterQualityByWeek(id, date) {
      //filterUserById(id) 
      // For a user, their sleep quality each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
+
+    //const data = this.arrayofSleepUserObjects.filter((object) => object.date > date && < object.date = date - 7);
+
+    //return data.map((date) => return date.sleepQuality)
+    
   }
 
 
 
-}
+
 
 export default Sleep;
 
