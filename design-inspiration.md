@@ -24,3 +24,6 @@
 - we like the idea of having a navigation sidebar so the user can navigate back to where they want to be easily from every page 
 - we are going to plan to use the icons from design inspiration 2 in the navigation sidebar 
 
+## TRY FOR:
+
+![Screen Shot 2021-07-11 at 2 41 06 PM](https://user-images.githubusercontent.com/78389005/125209898-6aff1200-e259-11eb-9b6e-10ab0e95baa8.png)
