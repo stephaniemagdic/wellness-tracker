@@ -2,7 +2,8 @@ import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
 
 describe('User Repository', () => {
-  let userRepository = new UserRepository({
+  let userRepository
+  let allUserData = [{
     id: 1,
     name: 'Luisa Hane',
     address: '15195 Nakia Tunnel, Erdmanport VA 19901-1697',
@@ -28,7 +29,7 @@ describe('User Repository', () => {
       ]}, {
     id: 3,
     name: 'Herminia Witting',
-    address": '85823 Bosco Fork, East Oscarstad MI 85126-5660',
+    address: '85823 Bosco Fork, East Oscarstad MI 85126-5660',
     email: 'Elwin.Tromp@yahoo.com',
     strideLength: 4.4,
     dailyStepGoal: 5000,
@@ -38,13 +39,21 @@ describe('User Repository', () => {
       42,
       33
       ]
-    })
+    }]
 
-  it('should be a function', function () {
+  beforeEach(() => {
+    userRepository = new UserRepository(allUserData)
+  })
+
+  it('should be a function', () => {
     expect(UserRepository).to.be.a('function');
   });
 
-  it('should be an instance of UserRepository', function() {
+  it('should be an instance of UserRepository', () => {
     expect(userRepository).to.be.an.instanceof(UserRepository);
   }); 
+
+  it('should return all user data', () => {
+    expect(userRepository.userData).to.equal(allUserData)
+  })
 });
