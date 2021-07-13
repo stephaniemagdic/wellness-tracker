@@ -59,6 +59,6 @@ describe('User', function() {
 
   it('should return first name', () => {
     const firstName = user.returnFirstName();
-    expect(firstName).to.equal(this.name);
+    expect(firstName).to.equal('Luisa');
   });
 });
