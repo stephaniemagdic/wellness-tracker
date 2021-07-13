@@ -14,14 +14,9 @@ body {
   display: flex;
 }
 
-/* section {
-  display: flex;
-  flex-direction: column
-} */
-
 /* LEFT-TOP */
 aside {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   height: 100vh;
   width: 20vw;
@@ -33,7 +28,7 @@ header {
 }
 
 .user-profile-section { 
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: space-between;
   height: 65vh;
@@ -42,14 +37,14 @@ header {
 /* LEFT-BOTTOM */
 
 .avg-step-section{
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   height: 25vh;
 }
 
 /* RIGHT-TOP */
 main {
-  display: flex;
+  /* display: flex; */
   flex-direction: column; 
   height: 75vh;
   width: 80vw
@@ -57,7 +52,7 @@ main {
 
 .all-user-info-section {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: center;
   align-items: stretch;
   height: 75vh;
@@ -74,7 +69,7 @@ article {
 /* RIGHT-BOTTOM */
 .friends-section {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   height: 25vh;
 }
 
