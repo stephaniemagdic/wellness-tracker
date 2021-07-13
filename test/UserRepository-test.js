@@ -56,4 +56,9 @@ describe('User Repository', () => {
   it('should return all user data', () => {
     expect(userRepository.userData).to.equal(allUserData)
   })
+
+  it('should return a specific user by id', () => {
+    const returnUserId = userRepository.returnUserData(1)
+    expect(returnUserId).to.equal(allUserData[0])
+  })
 });
