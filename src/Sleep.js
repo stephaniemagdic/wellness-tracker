@@ -61,6 +61,7 @@ class Sleep {
    // return this.sleepData.filter((user) => user.id === id
    // this will return an array 
   }
+}
 
 
 export default Sleep;
