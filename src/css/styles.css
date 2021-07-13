@@ -1,5 +1,92 @@
-body, html {
+/* body, html {
+  display: flex;
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
+} */
+
+* {
+  font-family: 'Open Sans', sans-serif;
+  border: 2px solid red;
 }
+
+body {
+  display: flex;
+}
+
+/* section {
+  display: flex;
+  flex-direction: column
+} */
+
+/* LEFT-TOP */
+aside {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 20vw;
+}
+
+header {
+  font-size: medium;
+  height: 10vh;
+}
+
+.user-profile-section { 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 65vh;
+}
+
+/* LEFT-BOTTOM */
+
+.avg-step-section{
+  display: flex;
+  flex-direction: column;
+  height: 25vh;
+}
+
+/* RIGHT-TOP */
+main {
+  display: flex;
+  flex-direction: column; 
+  height: 75vh;
+  width: 80vw
+}
+
+.all-user-info-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  height: 75vh;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 25%;
+  height: 75vh;
+}
+
+/* RIGHT-BOTTOM */
+.friends-section {
+  display: flex;
+  flex-direction: row;
+  height: 25vh;
+}
+
+.all-friends, .friend-1, .friend-2, .friend-3 {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: inherit;
+}
+
+.all-friends-img, .friend-img{
+  display: flex;
+}
+
+
