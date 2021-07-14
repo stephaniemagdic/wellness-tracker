@@ -55,3 +55,35 @@ console.log("done!");
 loadPage();
 });
 
+//---------------------EVENT LISTENER--------------------------------------//
+   //event listener on load .. get API DATA <--this needs to be rethought
+ 
+//---------------------GLOBAL VARIABLES--------------------------------------//
+const welcomeName = document.getElementById("welcome-user");
+const address = document.getElementById("address");
+const strideLength = document.getElementById("stride-length-text");
+
+// Step 3:
+
+//function to create card on page and an instance of user.
+
+
+ const users = new UserRespository(userRepo);
+
+ const user1 = users.returnUserData(1)
+ //destructure
+ const currentUser = new User(user1);
+
+ function loadPage() {
+   loadUserCard(currentUser);
+ }
+
+
+ function loadUserCard(userObj) {
+
+
+ welcomeName.innerHTML = `${userObj.returnFirstName()}`;
+ address = `${userObj.address}`
+
+ }
+
