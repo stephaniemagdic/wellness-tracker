@@ -13,3 +13,18 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 import userData from './data/users';
 import UserRepository from './UserRepository';
+
+//fectch user data only to populate the new User Repository
+
+//reusable function to fetch APIData
+    function fetchData(type) {
+      const root = http://localhost:3001/api/v1/;
+      const url = `${root}type`;
+
+      const promise = fetch(url)
+        .then(response => response.json());
+        console.log("response", response)
+        console.log("promise", promise)
+      return promise;
+    }
+
