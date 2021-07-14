@@ -28,3 +28,30 @@ import UserRepository from './UserRepository';
       return promise;
     }
 
+//Step 2: grab the data and store for each type of data needed.
+//class thoughts:
+// fetch(url).then((response) =>response.json.then(data) => myFunc(data)
+
+     //put this in a function and then return this so its not globally scoped.
+     const userRepoPromise = fetchData(users)
+     .then(data => console.log(data))
+     .catch(err => console.log("error message"));
+
+
+   const hydrationRepoPromise = fetchData(hydration)
+     .then(data => console.log(data))
+     .catch(err => console.log(console.log(errorMessage));
+
+
+   const sleepRepoPromise = fetchData(hydration)
+     .then(data => console.log(data))
+     .catch(err => /* do something else */);
+
+ 
+const APIDataArray = Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then((values) => {
+console.log("done!");
+//this will return an array
+//dont need .then()
+loadPage();
+});
+
