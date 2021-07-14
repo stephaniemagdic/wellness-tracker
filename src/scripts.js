@@ -16,20 +16,23 @@ import UserRepository from './UserRepository';
 
 //new Promise(resolve, reject)
 
-    function fetchData(type) {
+   async function fetchData(type) {
       const root = `http://localhost:3001/api/v1/`;
       const url = `${root}${type}`;
-      const promise = fetch(url)
-        .then(response => response.json()
-        )
+      const promise = await fetch(url)
+        .then(response => response.json())
+        .then(data => data)
        
         // .then(console.log("success!"))
         // .catch(console.log("errror!"))
+   
+      console.log(promise)
       return promise;
     }
 
-    const userTest = fetchData('users');
-    console.log(userTest);
+
+    // const userAPIData = fetchData('users');
+    // console.log("userTest results", userAPIData);
     
 
 //Step 2: grab the data and store for each type of data needed.
@@ -38,23 +41,27 @@ import UserRepository from './UserRepository';
 
      //put this in a function and then return this so its not globally scoped.
      
-  //    const userRepoPromise = fetchData(users)
-  //    .then(data => console.log(data))
-  //    .catch(err => console.log("error message"));
+const userRepoPromise = fetchData('users')
+  .then(console.log('success'))
+  // .catch(err => console.log("error message"));
 
+const hydrationRepoPromise = fetchData('hydration')
+  .then(console.log('success'));
+    //  .catch(err => console.log(console.log(errorMessage));
 
-  //  const hydrationRepoPromise = fetchData(hydration)
-  //    .then(data => console.log(data))
-  //    .catch(err => console.log(console.log(errorMessage));
-
-
-  //  const sleepRepoPromise = fetchData(hydration)
-  //    .then(data => console.log(data))
-  //    .catch(err => /* do something else */);
+const sleepRepoPromise = fetchData('sleep')
+  .then(console.log('success'));
+    //  .catch(err => /* do something else */);
 
  
-// const apiDataArray = Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then((values) => {
-// console.log("done!");
+const apiDataArrayPromise = Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then((values) => {
+  console.log("done!");
+  console.log("values", values);
+  console.log("apiData at index 0", values[0])
+  return values;
+});
+  
+
 
 
 //this will return an array
@@ -76,7 +83,8 @@ import UserRepository from './UserRepository';
 //function to create card on page and an instance of user.
 
 
-//  const users = new UserRespository(userRepo);
+//  const users = new UserRepository(userAPIData);
+//  console.log("our userRepo class instance", users)
 
 //  const user1 = users.returnUserData(1)
 //  //destructure
