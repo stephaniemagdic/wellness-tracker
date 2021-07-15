@@ -1,15 +1,3 @@
-//---------------------EVENT LISTENER--------------------------------------//
-window.addEventListener('load', loadPage);
- 
-//---------------------GLOBAL VARIABLES--------------------------------------//
-const welcomeName = document.querySelector(".welcome-user");
-const address = document.querySelector(".address");
-const strideLength = document.querySelector(".stride-length-text");
-
-let allUserData;
-let allHydrationData;
-let allSleeperData;
-
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
@@ -26,6 +14,17 @@ console.log('This is the JavaScript entry file - your code begins here.');
 import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
+
+//---------------------EVENT LISTENER--------------------------------------//
+window.addEventListener('load', loadPage);
+ 
+//---------------------GLOBAL VARIABLES--------------------------------------//
+let allUserData;
+let allHydrationData;
+let allSleeperData;
+const welcomeName = document.querySelector(".welcome-user");
+const address = document.querySelector(".address");
+const strideLength = document.querySelector(".stride-length-text");
 
 async function loadPage() {
   const dataSets = await fetchPageData();
@@ -48,8 +47,7 @@ async function fetchPageData() {
       //  .catch(err => /* do something else */);
 
   const apiDataSets = await Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then((values) => {
-    console.log(values);
-      return values;
+    return values;
   });
 
   return apiDataSets;
@@ -69,7 +67,6 @@ async function fetchData(type) {
     .then(response => response.json())
     .then(data => data)
     // .catch(console.log("errror!"))
-
   return promise;
 }
 
