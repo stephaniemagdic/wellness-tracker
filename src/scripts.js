@@ -2,9 +2,9 @@
 window.addEventListener('load', loadPage);
  
 //---------------------GLOBAL VARIABLES--------------------------------------//
-// const welcomeName = document.getElementById("welcome-user");
-// const address = document.getElementById("address");
-// const strideLength = document.getElementById("stride-length-text");
+const welcomeName = document.getElementById("welcome-user");
+const address = document.getElementById("address");
+const strideLength = document.getElementById("stride-length-text");
 
 let allUserData;
 let allHydrationData;
@@ -27,39 +27,19 @@ import userData from './data/users';
 import UserRepository from './UserRepository';
 
 
-   async function fetchData(type) {
-      const root = `http://localhost:3001/api/v1/`;
-      const url = `${root}${type}`;
-      const promise = await fetch(url)
-        .then(response => response.json())
-        .then(data => data)
-       
-        // .catch(console.log("errror!"))
-   
-      return promise;
-    }
+async function fetchData(type) {
+  const root = `http://localhost:3001/api/v1/`;
+  const url = `${root}${type}`;
+  const promise = await fetch(url)
+    .then(response => response.json())
+    .then(data => data)
+    // .catch(console.log("errror!"))
 
-    
-
-
-//create a function that creates all three repo classes
-//it will take in the async function apicalls and be awaited 
-// then it will 
-
-async function loadPage() {
-  const dataSets = await getAPICalls();
-  createRepoClasses(dataSets);
-  loadPageInfo();
-}
-
-createRepoClasses(dataSets) {
-  allUserData = new UserRepository(dataSets[0]);
-  // allHydrationData = new HydrationRespository(dataSets[1]);
-  // allSleeperData = new SleepRepository(dataSets[2]);
+  return promise;
 }
 
 async function getAPICalls() {
-const userRepoPromise = fetchData('users')
+  const userRepoPromise = fetchData('users')
   .then(console.log('success'))
   // .catch(err => console.log("error message"));
 
@@ -72,44 +52,34 @@ const sleepRepoPromise = fetchData('sleep')
     //  .catch(err => /* do something else */);
 
  
-const apiDataSets = await Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then((values) => {
-  return values;
+const apiDataSets = await Promise.all(
+  [userRepoPromise, hydrationRepoPromise, sleepRepoPromise])
+  .then((values) => {
+    return values;
 });
 
 return apiDataSets;
 
 }
 
+createRepoClasses(dataSets) {
+  allUserData = new UserRepository(dataSets[0]);
+  // allHydrationData = new HydrationRespository(dataSets[1]);
+  // allSleeperData = new SleepRepository(dataSets[2]);
+}
 
+function loadPageInfo() {
+  //This will call invoke a function that loads our user card to start.
+}
 
-// function returnAPIData(data) {
-//   console.log("I will pass this data on--->", data);
-// }
-
-
-
-
-  
-
-
-
-
-
-//this will return an array
-//dont need .then()
-
-// loadPage();
-// });
+async function loadPage() {
+  const dataSets = await getAPICalls();
+  createRepoClasses(dataSets);
+  loadPageInfo();
+}
 
 
 
-// Step 3:
-
-//function to create card on page and an instance of user.
-
-
-
- 
 
 //  const user1 = users.returnUserData(1)
 //  //destructure
