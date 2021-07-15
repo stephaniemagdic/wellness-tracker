@@ -9,13 +9,10 @@ class User {
     this.friends = userData.friends;
   }
 
-  returnFirstName(id) {
-   //const firstName = this.name //.split(' ');
-   //return firstName;
+  returnFirstName() {
+    const firstName = this.name.split(' ');
+    return firstName[0];
   }
-
-
-
 }
 
 export default User;

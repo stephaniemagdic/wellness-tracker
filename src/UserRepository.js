@@ -3,17 +3,17 @@ class UserRepository {
     this.userData = userData;
   }
 
-  returnUserData(id) {
-
+  returnUserData(userId) {
+    return this.userData.find(userData => userData.id === userId)
   }
 
   returnAverageStepGoal() {
-
+    const average = this.userData.reduce((totalSteps, userData) => {
+      totalSteps += userData.dailyStepGoal
+      return totalSteps 
+    }, 0)
+    return average / this.userData.length
+    }
   }
 
-
-  
-}
-
 export default UserRepository;
-
