@@ -4,7 +4,7 @@ class UserRepository {
   }
 
   returnUserData(userId) {
-    return this.userData.find(userData => userData.id == userId)
+    return this.userData.find(userData => userData.id === userId)
   }
 
   returnAverageStepGoal() {

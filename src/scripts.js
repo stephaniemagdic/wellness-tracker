@@ -2,9 +2,9 @@
 window.addEventListener('load', loadPage);
  
 //---------------------GLOBAL VARIABLES--------------------------------------//
-const welcomeName = document.getElementById("welcome-user");
-const address = document.getElementById("address");
-const strideLength = document.getElementById("stride-length-text");
+const welcomeName = document.querySelector(".welcome-user");
+const address = document.querySelector(".address");
+const strideLength = document.querySelector(".stride-length-text");
 
 let allUserData;
 let allHydrationData;
@@ -25,41 +25,40 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 import userData from './data/users';
 import UserRepository from './UserRepository';
+import User from './User';
 
 async function loadPage() {
   const dataSets = await getAPICalls();
-  createRepoClasses(dataSets);
+  console.log("dataSets", dataSets);
+  const repos = await createRepoClasses(dataSets);
   loadPageInfo();
 }
-
 
 async function getAPICalls() {
   const userRepoPromise = fetchData('users')
   .then(console.log('success'))
   // .catch(err => console.log("error message"));
 
-const hydrationRepoPromise = fetchData('hydration')
-  .then(console.log('success'));
-    //  .catch(err => console.log(console.log(errorMessage));
+  const hydrationRepoPromise = fetchData('hydration')
+    .then(console.log('success'));
+      //  .catch(err => console.log(console.log(errorMessage));
 
-const sleepRepoPromise = fetchData('sleep')
-  .then(console.log('success'));
-    //  .catch(err => /* do something else */);
+  const sleepRepoPromise = fetchData('sleep')
+    .then(console.log('success'));
+      //  .catch(err => /* do something else */);
 
-const apiDataSets = await Promise.all(
-  [userRepoPromise, hydrationRepoPromise, sleepRepoPromise])
-  .then((values) => {
-    return values;
-});
+  const apiDataSets = await Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then((values) => {
+    console.log(values);
+      return values;
+  });
 
-return apiDataSets;
-
+  return apiDataSets;
 }
 
-createRepoClasses(dataSets) {
-  allUserData = new UserRepository(dataSets[0]);
-  // allHydrationData = new HydrationRespository(dataSets[1]);
-  // allSleeperData = new SleepRepository(dataSets[2]);
+function createRepoClasses(dataSets) {
+  allUserData = new UserRepository(dataSets[0].userData);
+  // allHydrationData = new HydrationRespository(dataSets[1].hydrationData);
+  // allSleeperData = new SleepRepository(dataSets[2].sleepData);
 }
 
 async function fetchData(type) {
@@ -79,11 +78,11 @@ function loadPageInfo() {
 }
 
 function createUserCard() {
-  //  const user1 = users.returnUserData(1)
-  //  //destructure
-  //  const currentUser = new User(user1);
-  //  welcomeName.innerHTML = `${userObj.returnFirstName()}`;
-  //  address = `${userObj.address}`
+   const user1 = allUserData.returnUserData(1)
+   const currentUser = new User(user1);
+   welcomeName.innerHTML = `${currentUser.returnFirstName()}`;
+   address.innerHTML = `${currentUser.address}`;
+   strideLength.innerHTML = `${currentUser.strideLength}`
 }
 
 
