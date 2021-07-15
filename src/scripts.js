@@ -75,10 +75,10 @@ async function fetchData(type) {
 
 function loadPageInfo() {
   //This will call invoke a function that loads our user card to start.
-  createUserCard();
+  displayUserCard();
 }
 
-function createUserCard() {
+function displayUserCard() {
    const user1 = allUserData.returnUserData(1)
    const currentUser = new User(user1);
    welcomeName.innerHTML = `${currentUser.returnFirstName()}`;
