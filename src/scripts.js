@@ -48,9 +48,14 @@ import UserRepository from './UserRepository';
 
 async function loadPage() {
   const dataSets = await getAPICalls();
-  const users = new UserRepository(dataSets[0]);
-  const user = users.returnUserData(1);
-  //do something with user
+  createRepoClasses(dataSets);
+  loadPageInfo();
+}
+
+createRepoClasses(dataSets) {
+  allUserData = new UserRepository(dataSets[0]);
+  // allHydrationData = new HydrationRespository(dataSets[1]);
+  // allSleeperData = new SleepRepository(dataSets[2]);
 }
 
 async function getAPICalls() {
@@ -67,20 +72,11 @@ const sleepRepoPromise = fetchData('sleep')
     //  .catch(err => /* do something else */);
 
  
-const apiDataArrayPromise = await Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then((values) => {
-  // console.log("done!");
-  console.log("values", values);
-  // console.log("apiData at index 0", values[0].userData)
+const apiDataSets = await Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then((values) => {
   return values;
-  // return an array of with all three api data sets: userData, HydrationData, and sleepData.
 });
 
-// returnAPIData(apiDataArrayPromise)
-// return apiDataArrayPromise;
-// let allUserData = apiDataArrayPromise[0]
-// let allHydrationData= apiDataArrayPromise[1]
-// let allSleeperData= apiDataArrayPromise[2]
-allAPIData = apiDataArrayPromise
+return apiDataSets;
 
 }
 
