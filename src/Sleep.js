@@ -1,32 +1,24 @@
-class Sleep {
-  // let usersData = filterUserById(id);
-  constructor(usersData) {
-    this.usersSleepData= usersData;
-
-    // {"sleepData":[{"userID":1,"date":"2019/06/15","hoursSlept":6.1,"sleepQuality":2.2},{"userID":1,"date":"2019/08/15","hoursSlept":7,"sleepQuality":4.7},{"userID":1,"date":"2019/10/15","hoursSlept":10.8,"sleepQuality":4.7}
-  //]
-
+class UserSleepData {
+  constructor(sleepData) {
+    this.sleepData = sleepData;
   } 
 
-  calculateDailyAverage() {
-    //this.oneUsersSleep - the average number of hours slept per day
-
-    //const totalHours  = this.usersSleepData.reduce((sum, sleepElement) => {
-      //return sum + sleepElement.hoursSlept;
-
-    //});
-
-    // return totalHours/ this.oneUsersSleep.length;
-
-    
+  calculateAverageHoursSlept() {
+    const totalHoursSlept  = this.sleepData.reduce((sum, sleepItem) => {
+      return sum + sleepItem.hoursSlept;
+    }, 0);
+    return parseFloat((totalHoursSlept / this.sleepData.length).toFixed(1));
   }
 
-  calculateAverageSleepQuality(date) {
-    // const dateNeeded = this.usersSleepData.find((sleepData) =>
-    // return sleepData.date === date );
-    // return dataNeede.hoursSlept
+  returnHoursSlept(date = (this.sleepData[this.sleepData.length - 1].date)) {
+    console.log(date)
+    return this.sleepData.find(
+      sleepItem => sleepItem.date === date).hoursSlept;
+    // return dataNeede.hoursSlept //chain .hoursSlept
 
     //
+
+    // For a user, how many hours they slept for a specific day (identified by a date)
   }
 
   filterHoursByDate(date) {
@@ -68,5 +60,5 @@ class Sleep {
 }
 
 
-export default Sleep;
+export default UserSleepData;
 
