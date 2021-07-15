@@ -51,7 +51,6 @@ const sleepRepoPromise = fetchData('sleep')
   .then(console.log('success'));
     //  .catch(err => /* do something else */);
 
- 
 const apiDataSets = await Promise.all(
   [userRepoPromise, hydrationRepoPromise, sleepRepoPromise])
   .then((values) => {
@@ -70,6 +69,15 @@ createRepoClasses(dataSets) {
 
 function loadPageInfo() {
   //This will call invoke a function that loads our user card to start.
+  createUserCard();
+}
+
+function createUserCard() {
+  //  const user1 = users.returnUserData(1)
+  //  //destructure
+  //  const currentUser = new User(user1);
+  //  welcomeName.innerHTML = `${userObj.returnFirstName()}`;
+  //  address = `${userObj.address}`
 }
 
 async function loadPage() {
@@ -81,20 +89,7 @@ async function loadPage() {
 
 
 
-//  const user1 = users.returnUserData(1)
-//  //destructure
-//  const currentUser = new User(user1);
-
-//  function loadPage() {
-//    loadUserCard(currentUser);
-//  }
 
 
-//  function loadUserCard(userObj) {
 
-
-//  welcomeName.innerHTML = `${userObj.returnFirstName()}`;
-//  address = `${userObj.address}`
-
-//  }
 
