@@ -28,13 +28,13 @@ import UserRepository from './UserRepository';
 import User from './User';
 
 async function loadPage() {
-  const dataSets = await getAPICalls();
+  const dataSets = await fetchPageData();
   console.log("dataSets", dataSets);
-  const repos = await createRepoClasses(dataSets);
+  const repos = await generateRepoClasses(dataSets);
   loadPageInfo();
 }
 
-async function getAPICalls() {
+async function fetchPageData() {
   const userRepoPromise = fetchData('users')
   .then(console.log('success'))
   // .catch(err => console.log("error message"));
@@ -55,7 +55,8 @@ async function getAPICalls() {
   return apiDataSets;
 }
 
-function createRepoClasses(dataSets) {
+function generateRepoClasses(dataSets) {
+  //TO DO: Refactor-loop through argument to dry up.
   allUserData = new UserRepository(dataSets[0].userData);
   // allHydrationData = new HydrationRespository(dataSets[1].hydrationData);
   // allSleeperData = new SleepRepository(dataSets[2].sleepData);
@@ -84,12 +85,4 @@ function createUserCard() {
    address.innerHTML = `${currentUser.address}`;
    strideLength.innerHTML = `${currentUser.strideLength}`
 }
-
-
-
-
-
-
-
-
 
