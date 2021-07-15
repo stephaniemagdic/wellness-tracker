@@ -28,7 +28,6 @@ const strideLength = document.querySelector(".stride-length-text");
 
 async function loadPage() {
   const dataSets = await fetchPageData();
-  console.log("dataSets", dataSets);
   await generateRepoClasses(dataSets);
   loadPageInfo();
 }
