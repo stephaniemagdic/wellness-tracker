@@ -1,3 +1,15 @@
+//---------------------EVENT LISTENER--------------------------------------//
+window.addEventListener('load', loadPage);
+ 
+//---------------------GLOBAL VARIABLES--------------------------------------//
+// const welcomeName = document.getElementById("welcome-user");
+// const address = document.getElementById("address");
+// const strideLength = document.getElementById("stride-length-text");
+
+let allUserData;
+let allHydrationData;
+let allSleeperData;
+
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
@@ -14,7 +26,6 @@ console.log('This is the JavaScript entry file - your code begins here.');
 import userData from './data/users';
 import UserRepository from './UserRepository';
 
-//new Promise(resolve, reject)
 
    async function fetchData(type) {
       const root = `http://localhost:3001/api/v1/`;
@@ -23,24 +34,26 @@ import UserRepository from './UserRepository';
         .then(response => response.json())
         .then(data => data)
        
-        // .then(console.log("success!"))
         // .catch(console.log("errror!"))
    
-      console.log(promise)
       return promise;
     }
 
-
-    // const userAPIData = fetchData('users');
-    // console.log("userTest results", userAPIData);
     
 
-//Step 2: grab the data and store for each type of data needed.
-//class thoughts:
-// fetch(url).then((response) =>response.json.then(data) => myFunc(data)
 
-     //put this in a function and then return this so its not globally scoped.
-     
+//create a function that creates all three repo classes
+//it will take in the async function apicalls and be awaited 
+// then it will 
+
+async function loadPage() {
+  const dataSets = await getAPICalls();
+  const users = new UserRepository(dataSets[0]);
+  const user = users.returnUserData(1);
+  //do something with user
+}
+
+async function getAPICalls() {
 const userRepoPromise = fetchData('users')
   .then(console.log('success'))
   // .catch(err => console.log("error message"));
@@ -54,13 +67,35 @@ const sleepRepoPromise = fetchData('sleep')
     //  .catch(err => /* do something else */);
 
  
-const apiDataArrayPromise = Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then((values) => {
-  console.log("done!");
+const apiDataArrayPromise = await Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then((values) => {
+  // console.log("done!");
   console.log("values", values);
-  console.log("apiData at index 0", values[0])
+  // console.log("apiData at index 0", values[0].userData)
   return values;
+  // return an array of with all three api data sets: userData, HydrationData, and sleepData.
 });
+
+// returnAPIData(apiDataArrayPromise)
+// return apiDataArrayPromise;
+// let allUserData = apiDataArrayPromise[0]
+// let allHydrationData= apiDataArrayPromise[1]
+// let allSleeperData= apiDataArrayPromise[2]
+allAPIData = apiDataArrayPromise
+
+}
+
+
+
+// function returnAPIData(data) {
+//   console.log("I will pass this data on--->", data);
+// }
+
+
+
+
   
+
+
 
 
 
@@ -70,21 +105,15 @@ const apiDataArrayPromise = Promise.all([userRepoPromise, hydrationRepoPromise, 
 // loadPage();
 // });
 
-//---------------------EVENT LISTENER--------------------------------------//
-   //event listener on load .. get API DATA <--this needs to be rethought
- 
-//---------------------GLOBAL VARIABLES--------------------------------------//
-// const welcomeName = document.getElementById("welcome-user");
-// const address = document.getElementById("address");
-// const strideLength = document.getElementById("stride-length-text");
+
 
 // Step 3:
 
 //function to create card on page and an instance of user.
 
 
-//  const users = new UserRepository(userAPIData);
-//  console.log("our userRepo class instance", users)
+
+ 
 
 //  const user1 = users.returnUserData(1)
 //  //destructure
