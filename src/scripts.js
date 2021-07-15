@@ -26,17 +26,12 @@ console.log('This is the JavaScript entry file - your code begins here.');
 import userData from './data/users';
 import UserRepository from './UserRepository';
 
-
-async function fetchData(type) {
-  const root = `http://localhost:3001/api/v1/`;
-  const url = `${root}${type}`;
-  const promise = await fetch(url)
-    .then(response => response.json())
-    .then(data => data)
-    // .catch(console.log("errror!"))
-
-  return promise;
+async function loadPage() {
+  const dataSets = await getAPICalls();
+  createRepoClasses(dataSets);
+  loadPageInfo();
 }
+
 
 async function getAPICalls() {
   const userRepoPromise = fetchData('users')
@@ -67,6 +62,17 @@ createRepoClasses(dataSets) {
   // allSleeperData = new SleepRepository(dataSets[2]);
 }
 
+async function fetchData(type) {
+  const root = `http://localhost:3001/api/v1/`;
+  const url = `${root}${type}`;
+  const promise = await fetch(url)
+    .then(response => response.json())
+    .then(data => data)
+    // .catch(console.log("errror!"))
+
+  return promise;
+}
+
 function loadPageInfo() {
   //This will call invoke a function that loads our user card to start.
   createUserCard();
@@ -80,11 +86,6 @@ function createUserCard() {
   //  address = `${userObj.address}`
 }
 
-async function loadPage() {
-  const dataSets = await getAPICalls();
-  createRepoClasses(dataSets);
-  loadPageInfo();
-}
 
 
 
