@@ -30,7 +30,7 @@ import User from './User';
 async function loadPage() {
   const dataSets = await fetchPageData();
   console.log("dataSets", dataSets);
-  const repos = await generateRepoClasses(dataSets);
+  await generateRepoClasses(dataSets);
   loadPageInfo();
 }
 
