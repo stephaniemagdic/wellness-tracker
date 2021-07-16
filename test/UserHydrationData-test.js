@@ -78,7 +78,7 @@ describe('UserHydrationData', () => {
 
   it('should return fluid ounces consumed each day over the course of a week', () => {
     const numDailyOuncesDrankInWeek = userHydrationData.numDailyOuncesDrankInWeek('2019/06/24');
-    expect(numDailyOuncesDrankInWeek).to.deep.equal([96, 61, 91, 50, 43, 39, 61]);
+    expect(numDailyOuncesDrankInWeek).to.deep.equal([61, 91, 50, 50, 43, 39, 61]);
   })
 })
 
