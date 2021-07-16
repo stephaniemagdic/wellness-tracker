@@ -5,13 +5,11 @@ class UserHydrationData {
   // will need to return 2 pieces of data by id 
 
   
-  calculateDailyAverage(id) {
-    //const hydration = filterUserById(id);
-    //const average = sum(acc)/hydrationArray length
-    //return average
+  returnOuncesDrank(date = (this.hydroData[this.hydroData.length - 1].date)) {
+    return this.hydroData.find(hydroItem => hydroItem.date === date).numOunces;
   }
 
-  filterByDate(date = (this.sleepData[this.sleepData.length - 1].date)) {
+  filterByDate(date = (this.hydroData[this.hydroData.length - 1].date)) {
     //filterUserById(id)
     //return fluid ounces they consumed for a specific day (identified by a date) by the last Day. 
   }
