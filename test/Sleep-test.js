@@ -8,16 +8,16 @@ describe('UserSleepData', function() {
   //TO DO: CHECK THAT DATE DATA IS PARSED AS A STRING.
   before(() => {
     data = [
-      {userID:1, date:'2019/06/15', hoursSlept:6.1, sleepQuality:2.2}, 
-      {userID:1, date: '2019/06/16', hoursSlept: 4.1, sleepQuality:3.8},
-      {userID:1, date:'2019/06/17', hoursSlept: 8, sleepQuality: 2.6},
-      {userID:1,date:'2019/06/18', hoursSlept: 10.4, sleepQuality:3.1},
-      {userID:1, date:'2019/06/19', hoursSlept:10.7, sleepQuality:1.2},
-      {userID:1, date:'2019/06/20', hoursSlept:9.3, sleepQuality: 1.2},
-      {userID: 1,date:'2019/06/21', hoursSlept:7.8, sleepQuality:4.2},
-      {userID:1,date:'2019/06/22', hoursSlept:7, sleepQuality:3},
+      {userID: 1, date: '2019/06/15', hoursSlept:6.1, sleepQuality: 2.2}, 
+      {userID: 1, date: '2019/06/16', hoursSlept: 4.1, sleepQuality: 3.8},
+      {userID: 1, date: '2019/06/17', hoursSlept: 8, sleepQuality: 2.6},
+      {userID: 1, date: '2019/06/18', hoursSlept: 10.4, sleepQuality: 3.1},
+      {userID: 1, date: '2019/06/19', hoursSlept: 10.7, sleepQuality:1.2},
+      {userID: 1, date: '2019/06/20', hoursSlept: 9.3, sleepQuality: 1.2},
+      {userID: 1, date: '2019/06/21', hoursSlept: 7.8, sleepQuality:4.2},
+      {userID: 1, date: '2019/06/22', hoursSlept: 7, sleepQuality: 3},
     ];
-
+  
     user1SleepData = new UserSleepData(data);
   });
  
@@ -58,12 +58,12 @@ describe('UserSleepData', function() {
     expect(hoursSlept).to.equal(3);
   });
 
-  it('test', () => {
+  it('should return hours slept for past week', () => {
     const weeklyHoursSlept = user1SleepData.returnWeeklyHoursSlept();
-    expect(weeklyHoursSlept).to.deep.equal([7, 7.8, 9.3, 10.7, 10.4, 8, 4.1]);
+    expect(weeklyHoursSlept).to.deep.equal([4.1, 8, 10.4, 10.7, 9.3, 7.8, 7]);
+
+    const weeklyHoursSlept2 = user1SleepData.returnWeeklyHoursSlept('2019/06/17');
+    expect(weeklyHoursSlept2).to.deep.equal([6.1, 4.1, 8]);
   })
-
-  //test for if there are less than 7 days prior (say 3 days.)
-
 
 });

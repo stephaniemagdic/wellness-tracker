@@ -20,13 +20,16 @@ class UserSleepData {
       sleepItem => sleepItem.date === date).sleepQuality;
   }
 
-  // For a user, how many hours slept each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
-
-  returnWeeklyHoursSlept(date = (this.sleepData[this.sleepData.length - 1].date) {
+  returnWeeklyHoursSlept(date = (this.sleepData[this.sleepData.length - 1]).date) {
     const sleepItem = this.sleepData.find(sleepItem => sleepItem.date === date);
     const dateIndex = this.sleepData.indexOf(sleepItem);
-    const datesNeeded = this.sleepData.slice((parseInt(dateIndex - 6)));
-    return (datesNeeded.map((sleepItem) => sleepItem.hoursSlept)).reverse();
+    if (dateIndex >= 7) {
+      const datesNeeded = this.sleepData.slice((parseInt(dateIndex - 6)));
+      return (datesNeeded.map((sleepItem) => sleepItem.hoursSlept));
+    } else {
+      const datesNeeded = this.sleepData.slice(0, dateIndex + 1);
+      return (datesNeeded.map((sleepItem) => sleepItem.hoursSlept));
+    }
   }
 
   filterQualityByDate(date) {
