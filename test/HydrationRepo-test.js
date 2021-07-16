@@ -66,10 +66,13 @@ describe('HydrationRepository', () => {
     expect(hydrationRepository.hydroData).to.equal(allHydroData)
   })
 
-  it('should return one user\'s hydration data by id', () => {
-    const filterUserHydroData = hydrationRepository.filterUserHydroData(3)
-    console.log(filterUserHydroData);
-    console.log(allHydroData[2])
-    expect(filterUserHydroData).to.deep.equal(allHydroData[2])
+  it('should return all of one user\'s hydration data by id', () => {
+    const allHydroDataUserOne = hydrationRepository.filterUserHydroData(1)
+    expect(allHydroDataUserOne).to.deep.equal([allHydroData[0], allHydroData[3], allHydroData[6]])  
+  })
+
+  it('should return all of a different user\'s hydration data by id', () => {
+    const allHydroDataUserTwo = hydrationRepository.filterUserHydroData(2)
+    expect(allHydroDataUserTwo).to.deep.equal([allHydroData[1], allHydroData[4], allHydroData[7]])
   })
 })
