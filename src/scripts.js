@@ -15,6 +15,13 @@ import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
 
+// import {
+//   Chart
+// } from 'chart.js';
+
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
+
 //---------------------EVENT LISTENER--------------------------------------//
 window.addEventListener('load', loadPage);
  
@@ -69,6 +76,7 @@ async function fetchData(type) {
 function loadPageInfo() {
   //This will call invoke a function that loads our user card to start.
   displayUserCard();
+  displayStepGoal(); 
   // diplayHydrationInfo()
     //create instance of hydration repo class
     //create instance of hydration (holds one users hydration info)
@@ -90,5 +98,53 @@ function displayUserCard() {
    welcomeName.innerHTML = `${currentUser.returnFirstName()}`;
    address.innerHTML = `${currentUser.address}`;
    strideLength.innerHTML = `${currentUser.strideLength}`
+
+   //display User step goal from here.
 }
+
+function displayStepGoal() {
+  let stepGoalCompChart = document.getElementById('step-goal-chart')
+  //.getContect('2d');
+  
+  //create instance of the userRepo.
+  const user1 = allUserData.returnUserData(1)
+  //create instance of user.
+  const currentUser = new User(user1);
+
+  console.log('currentUser.dailyStepGoal, allUserData.returnAverageStepGoal()', currentUser.dailyStepGoal, allUserData.returnAverageStepGoal(), typeof(currentUser.dailyStepGoal), typeof(allUserData.returnAverageStepGoal()))
+  
+  let stepGoalChart = new Chart(stepGoalCompChart, {
+    type: 'bar', 
+    //horizontalBar, pie, line, doughnut, radar, polarArea
+    data: {
+    labels: ["Your Step Goal", "Average Step Goal"],
+    datasets: [{
+      label: "Daily Step Goal",
+      data: [
+        currentUser.dailyStepGoal, 
+        allUserData.returnAverageStepGoal()
+      ]
+    }],
+    // options: {}
+    }
+  });
+
+    stepGoalCompChart.innerHTML = `${stepGoalChart}`;
+}
+
+
+
+let hydroChart = document.getElementById('hydration-chart')
+
+//.getContect('2d');
+
+// let weeklySleepChart = new Chart(hydroChart, {
+// type: 'bar', 
+// //horizontalBar, pie, line, doughnut, radar, polarArea
+// data: {
+// labels: ["Monday", Tuesday", "Wednesday", Thursday"],
+// datasets: []
+// },
+// options: {}
+// }
 
