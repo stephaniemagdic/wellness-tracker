@@ -77,7 +77,8 @@ function loadPageInfo() {
   //This will call invoke a function that loads our user card to start.
   displayUserCard();
   displayStepGoal(); 
-  // diplayHydrationInfo()
+  displayHydrationData()
+  displaySleepData();
     //create instance of hydration repo class
     //create instance of hydration (holds one users hydration info)
         //because we have to call methods on hydration class to get data in
@@ -114,7 +115,7 @@ function displayStepGoal() {
   console.log('currentUser.dailyStepGoal, allUserData.returnAverageStepGoal()', currentUser.dailyStepGoal, allUserData.returnAverageStepGoal(), typeof(currentUser.dailyStepGoal), typeof(allUserData.returnAverageStepGoal()))
   
   let stepGoalChart = new Chart(stepGoalCompChart, {
-    type: 'bar', 
+    type: 'doughnut', 
     //horizontalBar, pie, line, doughnut, radar, polarArea
     data: {
     labels: ["Your Step Goal", "Average Step Goal"],
@@ -123,9 +124,11 @@ function displayStepGoal() {
       data: [
         currentUser.dailyStepGoal, 
         allUserData.returnAverageStepGoal()
-      ]
+      ],
+      backgroundColor: ["#3e95cd", "#8e5ea2"],
     }],
-    // options: {}
+    //TO DO: data labels: true! put numbers there so data is easy to read.
+    // options: {} //
     }
   });
 
@@ -133,12 +136,15 @@ function displayStepGoal() {
 }
 
 
-
-let hydroChart = document.getElementById('hydration-chart')
+function displayHydrationData() {
+// let hydroChart = document.getElementById('hydration-chart')
 
 //.getContect('2d');
 
 // let weeklySleepChart = new Chart(hydroChart, {
+  //water today
+
+  //water for the week.
 // type: 'bar', 
 // //horizontalBar, pie, line, doughnut, radar, polarArea
 // data: {
@@ -147,4 +153,21 @@ let hydroChart = document.getElementById('hydration-chart')
 // },
 // options: {}
 // }
+}
 
+function displaySleepData() {
+
+//combine next two:
+  //   For a user, their sleep data for the latest day (hours slept and quality of sleep)
+
+  //   For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
+    //2 charts: one for sleep quality and one for hours slept:
+      // 7 day chart.
+      // current day should be in RED.
+
+// For a user, their all-time average sleep quality and all-time average number of hours slept
+
+// bubble chart : 2 bubbles for where they are average all time and where
+// other users are.
+
+}
