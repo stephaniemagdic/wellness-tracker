@@ -70,4 +70,9 @@ describe('UserHydrationData', () => {
   it('should return all UserHydrationData data', () => {
     expect(userHydrationData.hydroData).to.equal(userOneHydroData)
   })
+
+  it('should return fluid ounces consumed for a specific date', () => {
+    const numOuncesDrank = userHydrationData.returnOuncesDrank('2019/06/15');
+    expect(numOuncesDrank).to.equal(37);
+  })
 })
