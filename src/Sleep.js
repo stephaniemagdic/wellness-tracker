@@ -11,22 +11,22 @@ class UserSleepData {
   }
 
   returnHoursSlept(date = (this.sleepData[this.sleepData.length - 1].date)) {
-    console.log(date)
     return this.sleepData.find(
       sleepItem => sleepItem.date === date).hoursSlept;
-    // return dataNeede.hoursSlept //chain .hoursSlept
-
-    //
-
-    // For a user, how many hours they slept for a specific day (identified by a date)
   }
 
-  filterHoursByDate(date) {
-   // const dateNeeded = this.usersSleepData.find((sleepData) =>
-    // return sleepData.date === date );
-    // return dataNeede.hoursSlept
+  returnSleepQuality(date = (this.sleepData[this.sleepData.length - 1].date)) {
+    return this.sleepData.find(
+      sleepItem => sleepItem.date === date).sleepQuality;
+  }
 
+  // For a user, how many hours slept each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
 
+  returnWeeklyHoursSlept(date = (this.sleepData[this.sleepData.length - 1].date) {
+    const sleepItem = this.sleepData.find(sleepItem => sleepItem.date === date);
+    const dateIndex = this.sleepData.indexOf(sleepItem);
+    const datesNeeded = this.sleepData.slice((parseInt(dateIndex - 6)));
+    return (datesNeeded.map((sleepItem) => sleepItem.hoursSlept)).reverse();
   }
 
   filterQualityByDate(date) {
