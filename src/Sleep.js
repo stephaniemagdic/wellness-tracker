@@ -20,7 +20,7 @@ class UserSleepData {
       sleepItem => sleepItem.date === date).sleepQuality;
   }
 
-  returnWeeklyHoursSlept(date = (this.sleepData[this.sleepData.length - 1]).date) {
+  returnHoursSleptByWeek(date = (this.sleepData[this.sleepData.length - 1]).date) {
     const sleepItem = this.sleepData.find(sleepItem => sleepItem.date === date);
     const dateIndex = this.sleepData.indexOf(sleepItem);
     if (dateIndex >= 7) {
@@ -31,6 +31,20 @@ class UserSleepData {
       return (datesNeeded.map((sleepItem) => sleepItem.hoursSlept));
     }
   }
+
+  returnSleepQualityByWeek(date = (this.sleepData[this.sleepData.length - 1]).date) {
+    const sleepItem = this.sleepData.find(sleepItem => sleepItem.date === date);
+    const dateIndex = this.sleepData.indexOf(sleepItem);
+    if (dateIndex >= 7) {
+      const datesNeeded = this.sleepData.slice((parseInt(dateIndex - 6)));
+      return (datesNeeded.map((sleepItem) => sleepItem.sleepQuality));
+    } else {
+      const datesNeeded = this.sleepData.slice(0, dateIndex + 1);
+      return (datesNeeded.map((sleepItem) => sleepItem.sleepQuality));
+    }
+  }
+
+
 
   filterQualityByDate(date) {
     //For a user, their sleep quality for a specific day (identified by a date)

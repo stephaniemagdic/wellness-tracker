@@ -59,11 +59,22 @@ describe('UserSleepData', function() {
   });
 
   it('should return hours slept for past week', () => {
-    const weeklyHoursSlept = user1SleepData.returnWeeklyHoursSlept();
+    const weeklyHoursSlept = user1SleepData.returnHoursSleptByWeek();
     expect(weeklyHoursSlept).to.deep.equal([4.1, 8, 10.4, 10.7, 9.3, 7.8, 7]);
-
-    const weeklyHoursSlept2 = user1SleepData.returnWeeklyHoursSlept('2019/06/17');
-    expect(weeklyHoursSlept2).to.deep.equal([6.1, 4.1, 8]);
   })
 
+  it('should return hours slept for all days prior if less than 7 days', () => {
+     const weeklyHoursSlept = user1SleepData.returnHoursSleptByWeek('2019/06/17');
+    expect(weeklyHoursSlept).to.deep.equal([6.1, 4.1, 8]);
+  })
+
+  it('should return daily sleep quality for past week', () => {
+    const weeklysleepQuality  = user1SleepData.returnSleepQualityByWeek();
+    expect(weeklysleepQuality).to.deep.equal([3.8, 2.6, 3.1, 1.2, 1.2, 4.2, 3]);
+  })
+
+  it('should return daily sleep quality for all days prior if less than 7 days', () => {
+     const weeklysleepQuality = user1SleepData.returnSleepQualityByWeek('2019/06/17');
+    expect(weeklysleepQuality).to.deep.equal([2.2, 3.8, 2.6]);
+  })
 });
