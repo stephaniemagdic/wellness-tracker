@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import UserHydrationData from '../src/UserHydrationData';
 
 describe('UserHydrationData', () => {
-  let UserHydrationData
+  let userHydrationData
   let userOneHydroData = [{
     userID: 1,
     date: "2019/06/15",
@@ -56,7 +56,7 @@ describe('UserHydrationData', () => {
 ];
   
   beforeEach(() => {
-    UserHydrationData = new UserHydrationData(userHydrationData)
+    userHydrationData = new UserHydrationData(userOneHydroData)
   })
 
   it('should be function', () => {
@@ -64,9 +64,10 @@ describe('UserHydrationData', () => {
   })
 
   it('should be an instance of UserHydrationData', () => {
-    expect(UserHydrationData).to.be.an.instanceOf(UserHydrationData)
+    expect(userHydrationData).to.be.an.instanceOf(UserHydrationData)
   })
 
   it('should return all UserHydrationData data', () => {
-    expect(UserHydrationData.hydroData).to.equal(userHydrationData)
+    expect(userHydrationData.hydroData).to.equal(userOneHydroData)
   })
+})
