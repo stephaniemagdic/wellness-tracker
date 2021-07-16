@@ -4,54 +4,49 @@ import HydrationRepository from '../src/HydrationRepository';
 describe('HydrationRepository', () => {
   let hydrationRepository
   let allHydroData = [{
-    "userID": 1,
-    "date":"2019/06/15",
-    "numOunces": 37
+    userID: 1,
+    date:"2019/06/15",
+    numOunces: 37
   },
   {
-    "userID": 2,
-    "date":"2019/06/15",
-    "numOunces": 75
+    userID: 2,
+    date:"2019/06/15",
+    numOunces: 75
   },
   {
-    "userID": 3,
-    "date":"2019/06/15",
-    "numOunces": 47
+    userID: 3,
+    date:"2019/06/15",
+    numOunces: 47
   },
   {
-    "userID": 4,
-    "date":"2019/06/15",
-    "numOunces": 85
+    userID: 1,
+    date:"2019/06/16",
+    numOunces: 69
   },
   {
-    "userID": 5,
-    "date":"2019/06/15",
-    "numOunces": 42
+    userID: 2,
+    date:"2019/06/16",
+    numOunces: 91
   },
   {
-    "userID": 6,
-    "date":"2019/06/15",
-    "numOunces": 87
+    userID: 3,
+    date:"2019/06/16",
+    numOunces: 99
   },
   {
-    "userID": 7,
-    "date":"2019/06/15",
-    "numOunces": 94
+    userID: 1,
+    date:"2019/06/17",
+    numOunces: 96
   },
   {
-    "userID": 8,
-    "date":"2019/06/15",
-    "numOunces": 84
+    userID: 2,
+    date:"2019/06/17",
+    numOunces: 96
   },
   {
-    "userID": 9,
-    "date":"2019/06/15",
-    "numOunces": 39
-  },
-  {
-    "userID": 10,
-    "date":"2019/06/15",
-    "numOunces": 75
+    userID: 3,
+    date:"2019/06/17",
+    numOunces: 28
   }
 ];
   
@@ -69,5 +64,12 @@ describe('HydrationRepository', () => {
 
   it('should return all hydration data', () => {
     expect(hydrationRepository.hydroData).to.equal(allHydroData)
+  })
+
+  it('should return one user\'s hydration data by id', () => {
+    const filterUserHydroData = hydrationRepository.filterUserHydroData(3)
+    console.log(filterUserHydroData);
+    console.log(allHydroData[2])
+    expect(filterUserHydroData).to.deep.equal(allHydroData[2])
   })
 })
