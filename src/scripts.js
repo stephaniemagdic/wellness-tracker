@@ -15,6 +15,14 @@ import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
 
+// import {
+//   Chart
+// } from 'chart.js';
+
+import { Chart, registerables } from 'chart.js';
+import UserSleepData from './UserSleepData';
+Chart.register(...registerables);
+
 //---------------------EVENT LISTENER--------------------------------------//
 window.addEventListener('load', loadPage);
  
@@ -69,7 +77,9 @@ async function fetchData(type) {
 function loadPageInfo() {
   //This will call invoke a function that loads our user card to start.
   displayUserCard();
-  // diplayHydrationInfo()
+  displayStepGoal(); 
+  displayHydrationData()
+  displaySleepData();
     //create instance of hydration repo class
     //create instance of hydration (holds one users hydration info)
         //because we have to call methods on hydration class to get data in
@@ -90,5 +100,116 @@ function displayUserCard() {
    welcomeName.innerHTML = `${currentUser.returnFirstName()}`;
    address.innerHTML = `${currentUser.address}`;
    strideLength.innerHTML = `${currentUser.strideLength}`
+
+   //display User step goal from here.
 }
+
+function displayStepGoal() {
+  let stepGoalCompChart = document.getElementById('step-goal-chart')
+  //.getContect('2d');
+  
+  //create instance of the userRepo.
+  const user1 = allUserData.returnUserData(1)
+  //create instance of user.
+  const currentUser = new User(user1);
+
+  console.log('currentUser.dailyStepGoal, allUserData.returnAverageStepGoal()', currentUser.dailyStepGoal, allUserData.returnAverageStepGoal(), typeof(currentUser.dailyStepGoal), typeof(allUserData.returnAverageStepGoal()))
+  
+  let stepGoalChartDisplay = new Chart(stepGoalCompChart, {
+    type: 'doughnut', 
+    //horizontalBar, pie, line, doughnut, radar, polarArea
+    data: {
+    labels: ["Your Step Goal", "Average Step Goal"],
+    datasets: [{
+      label: "Daily Step Goal",
+      data: [
+        currentUser.dailyStepGoal, 
+        allUserData.returnAverageStepGoal()
+      ],
+      backgroundColor: ["#3e95cd", "#8e5ea2"],
+    }],
+    //TO DO: data labels: true! put numbers there so data is easy to read.
+    // options: {} //
+    }
+  });
+
+    stepGoalCompChart.innerHTML = `${stepGoalChartDisplay}`;
+}
+
+
+function displayHydrationData() {
+// let hydroChart = document.getElementById('hydration-chart')
+
+//.getContect('2d');
+
+// let weeklyHydroChart = new Chart(hydroChart, {
+  //water today
+
+  //water for the week.
+// type: 'bar', 
+// //horizontalBar, pie, line, doughnut, radar, polarArea
+// data: {
+// labels: ["Monday", Tuesday", "Wednesday", Thursday"],
+// datasets: []
+// },
+// options: {}
+// }
+}
+
+function displaySleepData() {
+
+  const user1 = allUserData.returnUserData(1)
+  const currentUser = new User(user1);
+
+  //user's hydration data
+
+
+
+
+ //STEP 1 SLEEP DASHBOARD
+ const user1Data = allSleepData.returnUserData(currentUser.id);
+ const user1SleepData = new UserSleepData(UserSleepData);
+
+ displayDailySleepData(user1SleepData);
+
+
+//STEP 2 SLEEP DASHBOARD
+
+
+
+//STEP 3..
+// For a user, their all-time average sleep quality and all-time average number of hours slept
+
+// bubble chart : 2 bubbles for where they are average all time and where
+// other users are.
+
+}
+
+//STEP 1 of SLEEP DATA DASHBBOARD:
+
+function displayDailySleepData(user) {
+  let dailySleepDataChart = document.getElementById('step-goal-chart')
+  //.getContect('2d');
+  
+  let dailySleepDataChartDisplay = new Chart(dailySleepDataChart, {
+    type: 'horizontalBar', 
+    //horizontalBar, pie, line, doughnut, radar, polarArea
+    data: {
+    labels: ["Hours Slept", "Sleep Quality"],
+    datasets: [{
+      label: "By Day",
+      data: [
+        user.returnHoursSlept(),
+        user.returnSleepQuality()
+      ],
+      backgroundColor: ["#3e95cd", "#8e5ea2"],
+    }],
+    //TO DO: data labels: true! put numbers there so data is easy to read.
+    // options: {} //
+    }
+  });
+
+    stepGoalCompChart.innerHTML = `${dailySleepDataChartDisplay}`;
+}
+
 
