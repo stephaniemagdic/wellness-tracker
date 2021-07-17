@@ -55,6 +55,12 @@ describe('UserSleepData', function() {
         hoursSlept: 7, 
         sleepQuality: 3
       },
+      {
+        userID: 1, 
+        date: '2019/06/23', 
+        hoursSlept: 8, 
+        sleepQuality: 2.5
+      },
     ];
     user1SleepData = new UserSleepData(data);
   });
@@ -108,6 +114,11 @@ describe('UserSleepData', function() {
 
   it('should return daily sleep quality for past week', () => {
     const weeklysleepQuality  = user1SleepData.returnSleepQualityByWeek();
+    expect(weeklysleepQuality).to.deep.equal([2.6, 3.1, 1.2, 1.2, 4.2, 3, 2.5]);
+  });
+
+  it('should return daily sleep quality for past week IN MIDDLE OF WEEK', () => {
+    const weeklysleepQuality  = user1SleepData.returnSleepQualityByWeek('2019/06/22');
     expect(weeklysleepQuality).to.deep.equal([3.8, 2.6, 3.1, 1.2, 1.2, 4.2, 3]);
   });
 
