@@ -174,7 +174,7 @@ function displaySleepData() {
 
 
 //STEP 2 SLEEP DASHBOARD
-
+displayWeeklySleepData(user1SleepData)
 
 
 //STEP 3..
@@ -212,4 +212,15 @@ function displayDailySleepData(user) {
     stepGoalCompChart.innerHTML = `${dailySleepDataChartDisplay}`;
 }
 
+function displayWeeklySleepData(user) {
+  //combine next two:
+  //   For a user, their sleep data for the latest day (hours slept and quality of sleep)
+
+  //   For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
+    //2 charts: one for sleep quality and one for hours slept:
+      // 7 day chart.
+      // current day should be in RED.
+
+
+}
 
