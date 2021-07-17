@@ -92,25 +92,21 @@ function loadPageInfo() {
 }
 
 function displayUserCard() {
-  //create instance of the userRepo.
    const user1 = allUserData.returnUserData(1)
-   //create instance of user.
    const currentUser = new User(user1);
-   //use that info to display properties on the dom.
    welcomeName.innerHTML = `${currentUser.returnFirstName()}`;
    address.innerHTML = `${currentUser.address}`;
    strideLength.innerHTML = `${currentUser.strideLength}`
-
-   //display User step goal from here.
+   //TO DO
+      //display User step goal from here instead.
 }
 
 function displayStepGoal() {
   let stepGoalCompChart = document.getElementById('step-goal-chart')
   //.getContect('2d');
   
-  //create instance of the userRepo.
   const user1 = allUserData.returnUserData(1)
-  //create instance of user.
+
   const currentUser = new User(user1);
 
 
@@ -156,8 +152,9 @@ function displayHydrationData() {
 // }
 }
 
-function displaySleepData() {
 
+//THIS FUNCTION INVOKES ALL OF OUR CHART DISPLAY FUNCTIONS*
+function displaySleepData() {
   const user1 = allUserData.returnUserData(1)
   const currentUser = new User(user1);
 
@@ -167,21 +164,17 @@ function displaySleepData() {
 
  displayDailySleepData(user1SleepData);
 
-
 //STEP 2 SLEEP DASHBOARD
 displayWeeklySleepData(user1SleepData)
 
-
-//STEP 3..
+//STEP 3.. (NOT STARTED YET.)
 // For a user, their all-time average sleep quality and all-time average number of hours slept
 
 // bubble chart : 2 bubbles for where they are average all time and where
 // other users are.
-
 }
 
-//STEP 1 of SLEEP DATA DASHBBOARD:
-
+//STEP 1 of SLEEP DASHBBOARD:
 function displayDailySleepData(user) {
   let dailySleepDataChart = document.getElementById('step-goal-chart')
   //.getContect('2d');
@@ -200,24 +193,25 @@ function displayDailySleepData(user) {
       backgroundColor: ["#3e95cd", "#8e5ea2"],
     }],
     //TO DO: data labels: true! put numbers there so data is easy to read.
-    // options: {} //
+      // options: {} //
     }
   });
 
     dailySleepDataChart.innerHTML = `${dailySleepDataChartDisplay}`;
 }
 
+//STEP 2 SLEEP DASHBOARD
 function displayWeeklySleepData(user) {
-  //combine next two:
-  //   For a user, their sleep data for the latest day (hours slept and quality of sleep)
+   //TO DO:
+  //   For a user, their sleep data for the latest day (hours slept and quality of sleep)  --> put this day in red in the chart.
 
   //   For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
     //2 charts: one for sleep quality and one for hours slept:
       // 7 day chart.
-      // current day should be in RED.
+        // current day should be in RED. **
 
-
-      //7 days of sleep Quality: 
+      //PART 1 & 2 
+        //7 days of sleep Quality and hours slept: 
 
       let weeklySleepQualityChart = document.getElementById('weekly-sleep')
       //.getContect('2d');
@@ -246,7 +240,5 @@ function displayWeeklySleepData(user) {
       });
     
       weeklySleepQualityChart.innerHTML = `${weeklySleepDataChartDisplay}`;
-
-
 }
 
