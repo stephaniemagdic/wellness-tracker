@@ -24,7 +24,7 @@ class UserSleepData {
     const sleepItem = this.sleepData.find(sleepItem => sleepItem.date === date);
     const dateIndex = this.sleepData.indexOf(sleepItem);
     if (dateIndex >= 7) {
-      const datesNeeded = this.sleepData.slice((dateIndex - 7), (dateIndex + 1));
+      const datesNeeded = this.sleepData.slice((dateIndex - 6), (dateIndex + 1));
       return (datesNeeded.map((sleepItem) => sleepItem.hoursSlept));
     } else {
       const datesNeeded = this.sleepData.slice(0, (dateIndex + 1));
@@ -36,12 +36,10 @@ class UserSleepData {
     const sleepItem = this.sleepData.find(sleepItem => sleepItem.date === date);
     const dateIndex = this.sleepData.indexOf(sleepItem);
     if (dateIndex >= 7) {
-      const datesNeeded = this.sleepData.slice((parseInt(dateIndex - 6)), dateIndex + 1);
-      console.log(dateIndex, dateIndex - 6)
+      const datesNeeded = this.sleepData.slice((dateIndex - 6), (dateIndex + 1));
       return (datesNeeded.map((sleepItem) => sleepItem.sleepQuality));
     } else {
-      const datesNeeded = this.sleepData.slice(0, dateIndex + 1);
-      console.log(dateIndex, dateIndex + 1)
+      const datesNeeded = this.sleepData.slice(0, (dateIndex + 1));
       return (datesNeeded.map((sleepItem) => sleepItem.sleepQuality));
     }
   }

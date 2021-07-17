@@ -89,7 +89,7 @@ describe('UserSleepData', function() {
 
   it('should return hours slept for most recent date as default', () => {
     const hoursSlept = user1SleepData.returnHoursSlept();
-    expect(hoursSlept).to.equal(7);
+    expect(hoursSlept).to.equal(8);
   });
 
   it('should return sleep quality by day', () => {
@@ -99,31 +99,36 @@ describe('UserSleepData', function() {
 
   it('should return sleep quality for most recent date as default', () => {
     const hoursSlept = user1SleepData.returnSleepQuality();
-    expect(hoursSlept).to.equal(3);
+    expect(hoursSlept).to.equal(2.5);
   });
 
-  it('should return hours slept for past week', () => {
+  it('should return hours slept for previous week', () => {
     const weeklyHoursSlept = user1SleepData.returnHoursSleptByWeek();
-    expect(weeklyHoursSlept).to.deep.equal([4.1, 8, 10.4, 10.7, 9.3, 7.8, 7]);
+    expect(weeklyHoursSlept).to.deep.equal([8, 10.4, 10.7, 9.3, 7.8, 7, 8]);
   })
+
+  it('should return hours slept for only 7 days of data', () => {
+    const weeklyHoursSlept = user1SleepData.returnHoursSleptByWeek('2019/06/22');
+   expect(weeklyHoursSlept).to.deep.equal([4.1, 8, 10.4, 10.7, 9.3, 7.8, 7]);
+  });
 
   it('should return hours slept for all days prior if less than 7 days', () => {
      const weeklyHoursSlept = user1SleepData.returnHoursSleptByWeek('2019/06/17');
     expect(weeklyHoursSlept).to.deep.equal([6.1, 4.1, 8]);
   });
 
-  it('should return daily sleep quality for past week', () => {
+  it('should return daily sleep quality for previous week', () => {
     const weeklysleepQuality  = user1SleepData.returnSleepQualityByWeek();
     expect(weeklysleepQuality).to.deep.equal([2.6, 3.1, 1.2, 1.2, 4.2, 3, 2.5]);
   });
 
-  it('should return daily sleep quality for past week IN MIDDLE OF WEEK', () => {
-    const weeklysleepQuality  = user1SleepData.returnSleepQualityByWeek('2019/06/22');
-    expect(weeklysleepQuality).to.deep.equal([3.8, 2.6, 3.1, 1.2, 1.2, 4.2, 3]);
+  it('should return hours slept for only 7 days of data', () => {
+    const weeklySleepQuality  = user1SleepData.returnSleepQualityByWeek('2019/06/22');
+    expect(weeklySleepQuality).to.deep.equal([3.8, 2.6, 3.1, 1.2, 1.2, 4.2, 3]);
   });
 
   it('should return daily sleep quality for all days prior if less than 7 days', () => {
-     const weeklysleepQuality = user1SleepData.returnSleepQualityByWeek('2019/06/17');
-    expect(weeklysleepQuality).to.deep.equal([2.2, 3.8, 2.6]);
+     const weeklySleepQuality = user1SleepData.returnSleepQualityByWeek('2019/06/17');
+    expect(weeklySleepQuality).to.deep.equal([2.2, 3.8, 2.6]);
   });
 });
