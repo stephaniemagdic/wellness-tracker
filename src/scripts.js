@@ -21,6 +21,7 @@ import User from './User';
 
 import { Chart, registerables } from 'chart.js';
 import UserSleepData from './UserSleepData';
+import { EvalSourceMapDevToolPlugin } from 'webpack';
 Chart.register(...registerables);
 
 //---------------------EVENT LISTENER--------------------------------------//
@@ -32,7 +33,10 @@ let allHydrationData;
 let allSleeperData;
 const welcomeName = document.querySelector(".welcome-user");
 const address = document.querySelector(".address");
-const strideLength = document.querySelector(".stride-length-text");
+const email = document.querySelector(".email")
+const strideLength = document.querySelector(".stride-length-num");
+const dailyStepGoal = document.querySelector(".daily-step-goal-num")
+const averageStepGoal = document.querySelector("average-step-goal-num")
 
 async function loadPage() {
   const dataSets = await fetchPageData();
@@ -62,8 +66,8 @@ function generateRepoClasses(dataSets) {
   //TO DO: Refactor-loop through argument to dry up.
   console.log(dataSets);
   allUserData = new UserRepository(dataSets[0].userData);
-  // allHydrationData = new HydrationRespository(dataSets[1].hydrationData);
-  // allSleeperData = new SleepRepository(dataSets[2].sleepData);
+  allHydrationData = new HydrationRespository(dataSets[1].hydrationData);
+  allSleeperData = new SleepRepository(dataSets[2].sleepData);
 }
 
 async function fetchData(type) {
@@ -77,18 +81,25 @@ async function fetchData(type) {
 function loadPageInfo() {
   //This will call invoke a function that loads our user card to start.
   displayUserCard();
-  displayStepGoal(); 
-  displayHydrationData()
-  displaySleepData();
-    //create instance of hydration repo class
-    //create instance of hydration (holds one users hydration info)
-        //because we have to call methods on hydration class to get data in
+  displayAverageStepGoal();
+  displayAllHydrationData();
+  // function to set up first chart
+  // function to set up second chart 
+  // function to set up third chart
+
+  //create instance of UserHydrationData class
+  //create instance of hydration (holds one users hydration info)
+      //because we have to call methods on hydration class to get data in
+      //order to display this on the dom.
+  displayAllSleepData();
+  // function to set up first chart
+  // function to set up second chart 
+  // function to set up third chart
+ 
+  //create instance of UserSleepData class
+    //create instance of sleep class (holds one users sleep info)
+        //because we have to call methods on sleep class to get data in
         //order to display this on the dom.
-  // displaysleepInfo()
-    //create instance of sleep repo class
-      //create instance of sleep class (holds one users sleep info)
-          //because we have to call methods on sleep class to get data in
-          //order to display this on the dom.
 }
 
 function displayUserCard() {
@@ -96,85 +107,91 @@ function displayUserCard() {
    const currentUser = new User(user1);
    welcomeName.innerHTML = `${currentUser.returnFirstName()}`;
    address.innerHTML = `${currentUser.address}`;
+   email.innerHTML = `${currentUser.email}`;
    strideLength.innerHTML = `${currentUser.strideLength}`
+   dailyStepGoal.innerHTML = `${currentUser.dailyStepGoal}`
    //TO DO
       //display User step goal from here instead.
 }
 
-function displayStepGoal() {
-  let stepGoalCompChart = document.getElementById('step-goal-chart')
-  //.getContect('2d');
-  
+function displayAverageStepGoal() {
   const user1 = allUserData.returnUserData(1)
-
   const currentUser = new User(user1);
-
-
-  
-  let stepGoalChartDisplay = new Chart(stepGoalCompChart, {
-    type: 'doughnut', 
-    //horizontalBar, pie, line, doughnut, radar, polarArea
-    data: {
-    labels: ["Your Step Goal", "Average Step Goal"],
-    datasets: [{
-      label: "Daily Step Goal",
-      data: [
-        currentUser.dailyStepGoal, 
-        allUserData.returnAverageStepGoal()
-      ],
-      backgroundColor: ["#3e95cd", "#8e5ea2"],
-    }],
-    //TO DO: data labels: true! put numbers there so data is easy to read.
-    // options: {} //
-    }
-  });
-
-    stepGoalCompChart.innerHTML = `${stepGoalChartDisplay}`;
+  averageStepGoal.innerHTML = `${currentUser.averageStepGoal}`
 }
 
+// function displayStepGoal() {
+//   let stepGoalCompChart = document.getElementById('step-goal-chart')
+//   //.getContect('2d');
+  
+//   const user1 = allUserData.returnUserData(1)
+//   const currentUser = new User(user1);
+  
+//   let stepGoalChartDisplay = new Chart(stepGoalCompChart, {
+//     type: 'doughnut', 
+//     //horizontalBar, pie, line, doughnut, radar, polarArea
+//     data: {
+//     labels: ["Your Step Goal", "Average Step Goal"],
+//     datasets: [{
+//       label: "Daily Step Goal",
+//       data: [
+//         currentUser.dailyStepGoal, 
+//         allUserData.returnAverageStepGoal()
+//       ],
+//       backgroundColor: ["#3e95cd", "#8e5ea2"],
+//     }],
+//     //TO DO: data labels: true! put numbers there so data is easy to read.
+//     // options: {} //
+//     }
+//   });
 
-function displayHydrationData() {
-// let hydroChart = document.getElementById('hydration-chart')
-
-//.getContect('2d');
-
-// let weeklyHydroChart = new Chart(hydroChart, {
-  //water today
-
-  //water for the week.
-// type: 'bar', 
-// //horizontalBar, pie, line, doughnut, radar, polarArea
-// data: {
-// labels: ["Monday", Tuesday", "Wednesday", Thursday"],
-// datasets: []
-// },
-// options: {}
+//     stepGoalCompChart.innerHTML = `${stepGoalChartDisplay}`;
 // }
+
+function displayAllHydrationData(hydroData) {
+  let dailyHydoDataChart = document.getElementById('hydration-chart')
+  //.getContect('2d');
+  displayDailyHydrationData();
+  displayWeeklyHydrationData();
+  displayAllTimeHydrationData();
+}
+
+function displayDailyHydrationData() {
+
+}
+
+function displayWeeklyHydrationData() {
+
+}
+
+function displayAllTimeHydrationData() {
+
 }
 
 
 //THIS FUNCTION INVOKES ALL OF OUR CHART DISPLAY FUNCTIONS*
-function displaySleepData() {
-  const user1 = allUserData.returnUserData(1)
-  const currentUser = new User(user1);
+function displayAllSleepData() {
+  const userData = allUserData.returnUserData(1)
+  const currentUser = new User(userData);
 
  //STEP 1 SLEEP DASHBOARD
- const user1Data = allSleepData.returnUserData(currentUser.id);
- const user1SleepData = new UserSleepData(UserSleepData);
+ const sleepData = allSleepData.returnUserData(currentUser.id);
+ const currentUserSleepData = new UserSleepData(sleepData);
 
- displayDailySleepData(user1SleepData);
+displayDailySleepData(currentUserSleepData);
 
 //STEP 2 SLEEP DASHBOARD
-displayWeeklySleepData(user1SleepData)
+displayWeeklySleepData(currentUserSleepData)
 
 //STEP 3.. (NOT STARTED YET.)
 // For a user, their all-time average sleep quality and all-time average number of hours slept
 
 // bubble chart : 2 bubbles for where they are average all time and where
 // other users are.
+displayAllTimeSleepData(currentUserSleepData);
 }
 
-//STEP 1 of SLEEP DASHBBOARD:
+
 function displayDailySleepData(user) {
   let dailySleepDataChart = document.getElementById('step-goal-chart')
   //.getContect('2d');
@@ -242,3 +259,6 @@ function displayWeeklySleepData(user) {
       weeklySleepQualityChart.innerHTML = `${weeklySleepDataChartDisplay}`;
 }
 
+function displayAllTimeSleepData() {
+
+}
