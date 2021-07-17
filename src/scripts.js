@@ -218,47 +218,34 @@ function displayDailySleepData(user) {
 }
 
 //STEP 2 SLEEP DASHBOARD
-function displayWeeklySleepData(user) {
-   //TO DO:
-  //   For a user, their sleep data for the latest day (hours slept and quality of sleep)  --> put this day in red in the chart.
-
-  //   For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
-    //2 charts: one for sleep quality and one for hours slept:
-      // 7 day chart.
-        // current day should be in RED. **
-
-      //PART 1 & 2 
-        //7 days of sleep Quality and hours slept: 
-
-      let weeklySleepQualityChart = document.getElementById('weekly-sleep')
-      //.getContect('2d');
+// function displayWeeklySleepData(user) {
+//   let weeklySleepQualityChart = document.getElementById('weekly-sleep')
+//   //.getContect('2d');
+//   let weeklySleepDataChartDisplay = new Chart(weeklySleepQualityChart, {
+//     type: 'horizontalBar', 
+//     data: {
+//     labels: ["Date", "Date", ],
+//     datasets: [{
+//       label: "Hours Slept",
+//       data: [
+//         user.returnHoursSleptByWeek()[1]
+//       ],
+//       datasets: [{
+//         label: "Sleep Quality",
+//         data: [
+//           //do a for each here... (research how to do a forEach here ... can I use spread operator?? becaue it could be 7 days.. it could be 3 days in future itterations.)
+//           user.returnSleepQualityByWeek()[1]
+//         ],
+//       backgroundColor: ["#3e95cd", "#8e5ea2", "#3e95cd", "#8e5ea2", "#3e95cd", "#8e5ea2", "#3e95cd"],
+//       }],
+//     //TO DO: data labels: true! put numbers there so data is easy to read.
+//     // options: {} 
+//       }
+//   });
+//       weeklySleepQualityChart.innerHTML = `${weeklySleepDataChartDisplay}`;
       
-      let weeklySleepDataChartDisplay = new Chart(weeklySleepQualityChart, {
-        type: 'horizontalBar', 
-        //horizontalBar, pie, line, doughnut, radar, polarArea
-        data: {
-        labels: ["Date", "Date", ///],
-        datasets: [{
-          label: "Hours Slept",
-          data: [
-            user.returnHoursSleptByWeek()
-          ],
-          datasets: [{
-            label: "Sleep Quality",
-            data: [
-              //do a for each here... (research how to do a forEach here ... can I use spread operator?? becaue it could be 7 days.. it could be 3 days in future itterations.)
-              user.returnSleepQualityByWeek()[1]
-            ],
-          backgroundColor: ["#3e95cd", "#8e5ea2", "#3e95cd", "#8e5ea2", "#3e95cd", "#8e5ea2", "#3e95cd"],
-        }],
-        //TO DO: data labels: true! put numbers there so data is easy to read.
-        // options: {} //
-        }
-      });
-    
-      weeklySleepQualityChart.innerHTML = `${weeklySleepDataChartDisplay}`;
-}
+//   }
 
-function displayAllTimeSleepData() {
+// function displayAllTimeSleepData() {
 
-}
+// }
