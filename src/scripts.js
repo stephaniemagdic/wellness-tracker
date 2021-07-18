@@ -239,12 +239,9 @@ function displayWeeklySleepData(user) {
 }
 
 function displayAllTimeSleepData(user) {
-  // const allTimeSleepChart = document.getElementById('all-time-sleep');
+  const allTimeSleepButton = document.getElementById('all-time-sleep');
+  const allTimeSleepButton2 = document.getElementById('all-time-sleep-2');
 
-  // user.calculateAverageHoursSlept()
-  // user.calculateAverageSleepQuality()
-
-
-  // allTimeSleepChart.innerHTML = `${allTimeSleepChartDisplay}`;
-  // allTimeSleepChart2.innerHTML = `${allTimeSleepChartDisplay2}`;
+  allTimeSleepButton.innerHTML = `${user.calculateAverageHoursSlept()}`;
+  allTimeSleepButton2.innerHTML = `${user.calculateAverageSleepQuality()}`;
 }
