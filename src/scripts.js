@@ -83,13 +83,13 @@ function loadPageInfo() {
 
 //---------------------USER CARD--------------------------------------//
 function displayUserCard(user) {
-  const userData = allUserData.returnUserData(user.id)
-  const currentUser = new User(userData);
-  welcomeName.innerHTML = `${currentUser.returnFirstName()}`;
-  address.innerHTML = `${currentUser.address}`;
-  email.innerHTML = `${currentUser.email}`;
-  strideLength.innerHTML = `${currentUser.strideLength}`
-  dailyStepGoal.innerHTML = `${currentUser.dailyStepGoal}`
+  // const userData = allUserData.returnUserData(user.id)
+  // const currentUser = new User(userData);
+  welcomeName.innerHTML = `${user.returnFirstName()}`;
+  address.innerHTML = `${user.address}`;
+  email.innerHTML = `${user.email}`;
+  strideLength.innerHTML = `${user.strideLength}`
+  dailyStepGoal.innerHTML = `${user.dailyStepGoal}`
   averageStepGoal.innerHTML = `${allUserData.returnAverageStepGoal()}`
 }
 
