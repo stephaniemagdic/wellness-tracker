@@ -267,7 +267,7 @@ function displayAllTimeSleepData(user) {
       labels: ["Average Hours Slept", "Average Sleep Quality"],
       datasets: [{
         //TO DO: FIX THIS LABEL.
-        label: "Overall Sleep Quality",
+        label: ["Average Hours Slept", "Average Sleep Quality"],
         data: [
           user.calculateAverageHoursSlept(),
           user.calculateAverageSleepQuality()
