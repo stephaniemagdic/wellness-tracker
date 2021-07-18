@@ -190,33 +190,9 @@ function displayDailySleepData(user) {
   dailySleepDataChart.innerHTML = `${dailySleepDataChartDisplay}`;
 }
 
-// function displayWeeklySleepData(user) {
-//   let weeklySleepQualityChart = document.getElementById('weekly-sleep')
-//   //.getContect('2d');
-//   let weeklySleepDataChartDisplay = new Chart(weeklySleepQualityChart, {
-//     type: 'horizontalBar', 
-//     data: {
-//     labels: ["Date", "Date", ],
-//     datasets: [{
-//       label: "Hours Slept",
-//       data: [
-//         user.returnHoursSleptByWeek()[1]
-//       ],
-//       datasets: [{
-//         label: "Sleep Quality",
-//         data: [
-//           //do a for each here... (research how to do a forEach here ... can I use spread operator?? becaue it could be 7 days.. it could be 3 days in future itterations.)
-//           user.returnSleepQualityByWeek()[1]
-//         ],
-//       backgroundColor: ["#3e95cd", "#8e5ea2", "#3e95cd", "#8e5ea2", "#3e95cd", "#8e5ea2", "#3e95cd"],
-//       }],
-//     //TO DO: data labels: true! put numbers there so data is easy to read.
-//     // options: {} 
-//       }
-//   });
-//       weeklySleepQualityChart.innerHTML = `${weeklySleepDataChartDisplay}`;
-      
-//   }
+function displayWeeklySleepData(user) {
+    
+  }
 
 // function displayAllTimeSleepData() {
 
