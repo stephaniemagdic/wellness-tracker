@@ -62,8 +62,15 @@ article {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 25%;
   height: 75vh;
+}
+
+.row-header {
+  width: 10%; 
+}
+
+.hydration-column, .sleep-column {
+  width: 45%;
 }
 
 /* RIGHT-BOTTOM */
