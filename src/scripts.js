@@ -1,27 +1,14 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS file
 import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
-
-console.log('This is the JavaScript entry file - your code begins here.');
-
-// An example of how you tell webpack to use a JS file
-
 import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
+import SleepRepository from './SleepRepository';
+import UserSleepData from './UserSleepData';
+import HydrationRepository from './HydrationRepository';
+import UserHydrationData from './UserHydrationData';
 
-// import {
-//   Chart
-// } from 'chart.js';
 
 import { Chart, registerables } from 'chart.js';
-import UserSleepData from './UserSleepData';
-import { EvalSourceMapDevToolPlugin } from 'webpack';
 Chart.register(...registerables);
 
 //---------------------EVENT LISTENER--------------------------------------//
@@ -30,14 +17,15 @@ window.addEventListener('load', loadPage);
 //---------------------GLOBAL VARIABLES--------------------------------------//
 let allUserData;
 let allHydrationData;
-let allSleeperData;
+let allSleepData;
 const welcomeName = document.querySelector(".welcome-user");
 const address = document.querySelector(".address");
 const email = document.querySelector(".email")
 const strideLength = document.querySelector(".stride-length-num");
 const dailyStepGoal = document.querySelector(".daily-step-goal-num")
-const averageStepGoal = document.querySelector("average-step-goal-num")
+const averageStepGoal = document.querySelector(".average-step-goal-num")
 
+//---------------------FETCH CALLS--------------------------------------//
 async function loadPage() {
   const dataSets = await fetchPageData();
   generateRepoClasses(dataSets);
@@ -66,8 +54,8 @@ function generateRepoClasses(dataSets) {
   //TO DO: Refactor-loop through argument to dry up.
   console.log(dataSets);
   allUserData = new UserRepository(dataSets[0].userData);
-  allHydrationData = new HydrationRespository(dataSets[1].hydrationData);
-  allSleeperData = new SleepRepository(dataSets[2].sleepData);
+  allHydrationData = new HydrationRepository(dataSets[1].hydrationData);
+  allSleepData = new SleepRepository(dataSets[2].sleepData);
 }
 
 async function fetchData(type) {
@@ -77,6 +65,11 @@ async function fetchData(type) {
     // .catch(console.log("error!"))
   return promise;
 }
+
+
+
+
+//---------------------DISPLAY FUNCTIONS--------------------------------------//
 
 function loadPageInfo() {
   //This will call invoke a function that loads our user card to start.
@@ -102,6 +95,10 @@ function loadPageInfo() {
         //order to display this on the dom.
 }
 
+
+
+
+//---------------------USER CARD --------------------------------------//
 function displayUserCard() {
    const user1 = allUserData.returnUserData(1)
    const currentUser = new User(user1);
@@ -115,9 +112,7 @@ function displayUserCard() {
 }
 
 function displayAverageStepGoal() {
-  const user1 = allUserData.returnUserData(1)
-  const currentUser = new User(user1);
-  averageStepGoal.innerHTML = `${currentUser.averageStepGoal}`
+  averageStepGoal.innerHTML = `${allUserData.returnAverageStepGoal()}`
 }
 
 // function displayStepGoal() {
@@ -148,73 +143,78 @@ function displayAverageStepGoal() {
 //     stepGoalCompChart.innerHTML = `${stepGoalChartDisplay}`;
 // }
 
+
+
+
+//---------------------HYDRATION CHARTS --------------------------------------//
 function displayAllHydrationData(hydroData) {
   let dailyHydoDataChart = document.getElementById('hydration-chart')
   //.getContect('2d');
-  displayDailyHydrationData();
-  displayWeeklyHydrationData();
-  displayAllTimeHydrationData();
+  // displayDailyHydrationData();
+  // displayWeeklyHydrationData();
+  // displayAllTimeHydrationData();
 }
 
-function displayDailyHydrationData() {
+// function displayDailyHydrationData() {
 
-}
+// }
 
-function displayWeeklyHydrationData() {
+// function displayWeeklyHydrationData() {
 
-}
+// }
 
-function displayAllTimeHydrationData() {
+// function displayAllTimeHydrationData() {
 
-}
+// }
 
 
-//THIS FUNCTION INVOKES ALL OF OUR CHART DISPLAY FUNCTIONS*
+
+
+
+
+//---------------------SLEEP CHARTS --------------------------------------//
 function displayAllSleepData() {
   const userData = allUserData.returnUserData(1)
   const currentUser = new User(userData);
 
- //STEP 1 SLEEP DASHBOARD
- const sleepData = allSleepData.returnUserData(currentUser.id);
- const currentUserSleepData = new UserSleepData(sleepData);
+  const sleepData = allSleepData.returnUserData(currentUser.id);
+  const currentUserSleepData = new UserSleepData(sleepData);
 
-displayDailySleepData(currentUserSleepData);
+  displayDailySleepData(currentUserSleepData);
 
 //STEP 2 SLEEP DASHBOARD
-displayWeeklySleepData(currentUserSleepData)
+  // displayWeeklySleepData(currentUserSleepData)
 
 //STEP 3.. (NOT STARTED YET.)
 // For a user, their all-time average sleep quality and all-time average number of hours slept
 
 // bubble chart : 2 bubbles for where they are average all time and where
 // other users are.
-displayAllTimeSleepData(currentUserSleepData);
+  // displayAllTimeSleepData(currentUserSleepData);
 }
 
-
 function displayDailySleepData(user) {
-  let dailySleepDataChart = document.getElementById('step-goal-chart')
+  let dailySleepDataChart = document.getElementById('daily-sleep')
   //.getContect('2d');
-  
+
   let dailySleepDataChartDisplay = new Chart(dailySleepDataChart, {
-    type: 'horizontalBar', 
-    //horizontalBar, pie, line, doughnut, radar, polarArea
+    type: 'doughnut',
     data: {
-    labels: ["Hours Slept", "Sleep Quality"],
-    datasets: [{
-      label: "By Day",
-      data: [
-        user.returnHoursSlept(),
-        user.returnSleepQuality()
-      ],
-      backgroundColor: ["#3e95cd", "#8e5ea2"],
-    }],
-    //TO DO: data labels: true! put numbers there so data is easy to read.
+      labels: ["Hours Slept", "Sleep Quality"],
+      datasets: [{
+        label: "By Day",
+        data: [
+          user.returnHoursSlept(),
+          user.returnSleepQuality()
+        ],
+        backgroundColor: ["#3e95cd", "#8e5ea2"],
+      }],
+      //TO DO: data labels: true! put numbers there so data is easy to read.
       // options: {} //
     }
   });
 
-    dailySleepDataChart.innerHTML = `${dailySleepDataChartDisplay}`;
+  dailySleepDataChart.innerHTML = `${dailySleepDataChartDisplay}`;
 }
 
 //STEP 2 SLEEP DASHBOARD
