@@ -181,8 +181,16 @@ function displayDailySleepData(user) {
         ],
         backgroundColor: ["#3e95cd", "#8e5ea2"],
       }],
-      //TO DO: data labels: true! put numbers there so data is easy to read.
-      // options: {} //
+      options: {
+        // responsive: true,
+        // maintainAspectRatio: false,
+        legend: { display: false },
+        title: {
+          display: true,
+          text: 'Weekly Sleep Quality DisplayTitle',
+          responsive: true
+        }
+      }
     }
   });
 
@@ -191,6 +199,7 @@ function displayDailySleepData(user) {
 
 function displayWeeklySleepData(user) {
   let weeklySleepQualityChart = document.getElementById('weekly-sleep');
+
   let weeklySleepDataChartDisplay = new Chart(weeklySleepQualityChart, {
     type: 'bar', 
     data: {
