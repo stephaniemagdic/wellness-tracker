@@ -115,33 +115,6 @@ function displayAverageStepGoal() {
   averageStepGoal.innerHTML = `${allUserData.returnAverageStepGoal()}`
 }
 
-// function displayStepGoal() {
-//   let stepGoalCompChart = document.getElementById('step-goal-chart')
-//   //.getContect('2d');
-  
-//   const user1 = allUserData.returnUserData(1)
-//   const currentUser = new User(user1);
-  
-//   let stepGoalChartDisplay = new Chart(stepGoalCompChart, {
-//     type: 'doughnut', 
-//     //horizontalBar, pie, line, doughnut, radar, polarArea
-//     data: {
-//     labels: ["Your Step Goal", "Average Step Goal"],
-//     datasets: [{
-//       label: "Daily Step Goal",
-//       data: [
-//         currentUser.dailyStepGoal, 
-//         allUserData.returnAverageStepGoal()
-//       ],
-//       backgroundColor: ["#3e95cd", "#8e5ea2"],
-//     }],
-//     //TO DO: data labels: true! put numbers there so data is easy to read.
-//     // options: {} //
-//     }
-//   });
-
-//     stepGoalCompChart.innerHTML = `${stepGoalChartDisplay}`;
-// }
 
 
 
@@ -198,7 +171,7 @@ function displayDailySleepData(user) {
   //.getContect('2d');
 
   let dailySleepDataChartDisplay = new Chart(dailySleepDataChart, {
-    type: 'doughnut',
+    type: 'bar',
     data: {
       labels: ["Hours Slept", "Sleep Quality"],
       datasets: [{
@@ -217,7 +190,6 @@ function displayDailySleepData(user) {
   dailySleepDataChart.innerHTML = `${dailySleepDataChartDisplay}`;
 }
 
-//STEP 2 SLEEP DASHBOARD
 // function displayWeeklySleepData(user) {
 //   let weeklySleepQualityChart = document.getElementById('weekly-sleep')
 //   //.getContect('2d');
