@@ -195,33 +195,13 @@ function displayAllSleepData() {
 }
 
 function displayDailySleepData(user) {
-  const dailySleepDataChart = document.getElementById('daily-sleep')
-  const dailySleepDataChartDisplay = new Chart(dailySleepDataChart, {
-    type: 'bar',
-    data: {
-      labels: ['Hours Slept', 'Sleep Quality'],
-      datasets: [{
-        label: 'By Day',
-        data: [
-          user.returnHoursSlept(),
-          user.returnSleepQuality()
-        ],
-        backgroundColor: ['#3e95cd', '#8e5ea2'],
-      }],
-      options: {
-        // responsive: true,
-        // maintainAspectRatio: false,
-        legend: { display: false },
-        title: {
-          display: true,
-          text: '',
-          responsive: true
-        }
-      }
-    }
-  });
+  const dailySleepHoursButton = document.getElementById('daily-sleep-hours');
+  const dailySleepDataButton = document.getElementById('daily-sleep-quality');
 
-  dailySleepDataChart.innerHTML = `${dailySleepDataChartDisplay}`;
+  dailySleepHoursButton.innerHTML = `${user.returnHoursSlept()}`;
+  console.log(user.returnHoursSlept());
+  console.log(user.returnSleepQuality());
+  dailySleepDataButton.innerHTML = `${user.returnSleepQuality()}`;
 }
 
 function displayWeeklySleepData(user) {
@@ -259,60 +239,12 @@ function displayWeeklySleepData(user) {
 }
 
 function displayAllTimeSleepData(user) {
-  const allTimeSleepChart = document.getElementById('all-time-sleep');
-  const allTimeSleepChartDisplay = new Chart(allTimeSleepChart, {
-    type: 'bar',
-    data: {
-      labels: ['Hours Slept'],
-      datasets: [
-        {
-          barPercentage: 0.2,
-          label: ['Hours Slept'], 
-          data: [user.calculateAverageHoursSlept()],
-          backgroundColor: ['#3e95cd']
-        }
-      ]
-    },
-      options: {
-        // responsive: true,
-        // maintainAspectRatio: false,
-        legend: { display: false },
-        title: {
-          display: true,
-          text: '',
-          responsive: true, 
-        },
-          
-      }
-  });
+  // const allTimeSleepChart = document.getElementById('all-time-sleep');
 
-  const allTimeSleepChart2 = document.getElementById('all-time-sleep-2')
-  const allTimeSleepChartDisplay2 = new Chart(allTimeSleepChart2, {
-    type: 'bar',
-      data: {
-      labels: ['Sleep Quality'],
-      datasets: [
-        {
-          barPercentage: 0.2,
-          label: ['Sleep Quality'], 
-          data: [user.calculateAverageSleepQuality()],
-          backgroundColor: ['#8e5ea2']
-        }
-      ]
-    },
-    options: {
-      // responsive: true,
-      // maintainAspectRatio: false,
-      legend: { display: false },
-      title: {
-        display: true,
-        text: '',
-        responsive: true
-      },
-        
-    }
-  });
+  // user.calculateAverageHoursSlept()
+  // user.calculateAverageSleepQuality()
 
-  allTimeSleepChart.innerHTML = `${allTimeSleepChartDisplay}`;
-  allTimeSleepChart2.innerHTML = `${allTimeSleepChartDisplay2}`;
+
+  // allTimeSleepChart.innerHTML = `${allTimeSleepChartDisplay}`;
+  // allTimeSleepChart2.innerHTML = `${allTimeSleepChartDisplay2}`;
 }
