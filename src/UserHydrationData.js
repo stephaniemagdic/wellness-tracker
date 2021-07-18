@@ -8,10 +8,18 @@ class UserHydrationData {
   }
 
   numDailyOuncesDrankInWeek(today = (this.hydroData[this.hydroData.length - 1].date)) {
-    let dateIndex = this.hydroData.findIndex(day => day.date === today)
-    let weekData = this.hydroData.slice(dateIndex - 6, dateIndex + 1)
+    const dateIndex = this.hydroData.findIndex(day => day.date === today)
+    const weekData = this.hydroData.slice(dateIndex - 6, dateIndex + 1)
     return weekData.map(day => day.numOunces)
   }
+
+  // calculateAverageOuncesConsumed() {
+  //   const totalOuncesDrank = this.hydroData.returnOuncesDrank(date) 
+  // }
+
+  // calculateOverallHydration() {
+
+  // }
 }
 
 export default UserHydrationData;
