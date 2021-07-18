@@ -8,7 +8,7 @@ import HydrationRepository from './HydrationRepository';
 import UserHydrationData from './UserHydrationData';
 
 
-import { Chart, registerables } from 'chart.js';
+import { Chart, LinearScale, registerables } from 'chart.js';
 Chart.register(...registerables);
 
 //---------------------EVENT LISTENER--------------------------------------//
@@ -215,7 +215,7 @@ function displayDailySleepData(user) {
         legend: { display: false },
         title: {
           display: true,
-          text: 'Weekly Sleep Quality DisplayTitle',
+          text: '',
           responsive: true
         }
       }
@@ -250,7 +250,7 @@ function displayWeeklySleepData(user) {
       legend: { display: false },
       title: {
         display: true,
-        text: 'Weekly Sleep Quality DisplayTitle',
+        text: '',
         responsive: true
       }
     }
@@ -260,32 +260,52 @@ function displayWeeklySleepData(user) {
 }
 
 function displayAllTimeSleepData(user) {
+  console.log(user.calculateAverageHoursSlept(), user.calculateAverageSleepQuality())
   let allTimeSleepChart = document.getElementById('all-time-sleep')
   let allTimeSleepChartDisplay = new Chart(allTimeSleepChart, {
     type: 'bar',
     data: {
-      labels: ["Average Hours Slept", "Average Sleep Quality"],
-      datasets: [{
-        //TO DO: FIX THIS LABEL.
-        label: ["Average Hours Slept", "Average Sleep Quality"],
-        data: [
-          user.calculateAverageHoursSlept(),
-          user.calculateAverageSleepQuality()
-        ],
-        backgroundColor: ["#3e95cd", "#8e5ea2"],
-      }],
+      labels: ["Hours Slept"],
+      datasets: [
+        {
+          barPercentage: 0.2,
+          label: ["Hours Slept"], 
+          data: [
+            user.calculateAverageHoursSlept()
+          ],
+          backgroundColor: ["#3e95cd"]
+        }
+      ]
+    },
       options: {
         // responsive: true,
         // maintainAspectRatio: false,
         legend: { display: false },
         title: {
           display: true,
-          text: 'Weekly Sleep Quality DisplayTitle',
+          text: '',
           responsive: true
-        }
+        },
+          
       }
-    }
   });
+
+  //all-time-sleep-2
+
+    // type: 'bar',
+    //   data: {
+    //   labels: ["Hours Slept", "Sleep Quality"],
+    //   datasets: [
+    //     {
+    //       label: ["Sleep Quality"], 
+    //       // type: "line",
+    //       data: [
+    //         user.calculateAverageSleepQuality()
+    //       ],
+    //       backgroundColor: ["#8e5ea2"]
+    //     }
+    //   ]
+    // },
 
   allTimeSleepChart.innerHTML = `${allTimeSleepChartDisplay}`;
 }
