@@ -7,8 +7,8 @@ class UserHydrationData {
     return this.hydroData.find(hydroItem => hydroItem.date === date).numOunces;
   }
 
-  numDailyOuncesDrankInWeek(specificDate = (this.hydroData[this.hydroData.length - 1].date)) {
-    let dateIndex = this.hydroData.findIndex(day => day.date === specificDate)
+  numDailyOuncesDrankInWeek(today = (this.hydroData[this.hydroData.length - 1].date)) {
+    let dateIndex = this.hydroData.findIndex(day => day.date === today)
     let weekData = this.hydroData.slice(dateIndex - 6, dateIndex + 1)
     return weekData.map(day => day.numOunces)
   }
