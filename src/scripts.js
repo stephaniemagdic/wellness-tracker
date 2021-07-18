@@ -68,6 +68,16 @@ async function fetchData(type) {
 
 //---------------------ALL DISPLAY FUNCTIONS----------------------------------//
 function loadPageInfo() {
+  //generate random user
+  // look through user repo and grab random user.
+  //var item = items[Math.floor(Math.random()*items.length)];
+
+  const user = allUserData.userData[Math.floor(Math.random()* allUserData.userData.length)]
+  console.log(allUserData, user);
+
+  //pass in as argument to all three functions below.
+  
+
   displayUserCard();
   displayAllHydrationData();
   displayAllSleepData();
