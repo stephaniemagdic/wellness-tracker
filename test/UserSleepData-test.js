@@ -82,6 +82,11 @@ describe('UserSleepData', function() {
     expect(dailyAverageSlept).to.equal(7.9);
   });
 
+  it('should return average sleep quality', () => {
+    const dailyAverageSlept = user1SleepData.calculateAverageSleepQuality();
+    expect(dailyAverageSlept).to.equal(2.6);
+  });
+
   it('should return hours slept by day', () => {
     const hoursSlept = user1SleepData.returnHoursSlept('2019/06/15');
     expect(hoursSlept).to.equal(6.1);
