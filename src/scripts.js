@@ -168,7 +168,6 @@ function displayAllSleepData() {
 
 function displayDailySleepData(user) {
   let dailySleepDataChart = document.getElementById('daily-sleep')
-  //.getContect('2d');
 
   let dailySleepDataChartDisplay = new Chart(dailySleepDataChart, {
     type: 'bar',
@@ -191,44 +190,38 @@ function displayDailySleepData(user) {
 }
 
 function displayWeeklySleepData(user) {
-
-  // let dates = []
-  const weekOfHoursSlept = user.returnHoursSleptByWeek();
-  let weeklySleepQualityChart = document.getElementById('weekly-sleep')
-  console.log([...weekOfHoursSlept])
-  
-  //.getContect('2d');
-
+  let weeklySleepQualityChart = document.getElementById('weekly-sleep');
   let weeklySleepDataChartDisplay = new Chart(weeklySleepQualityChart, {
     type: 'bar', 
     data: {
-    // labels: ["7 dates will be listed here"],
-    labels: [ 'M', 'T', 'W', 'T', 'F', 'S', 'S'],
-    datasets: [
-      //HOURS SLEPT LABEL
-      {
-        label: ['Hours Slept'],
-        data: [...weekOfHoursSlept],
-        backgroundColor: ["#3e95cd"]
-      },
-      {
-        label: "Sleep Quality",
-        data:user.returnSleepQualityByWeek(),
-        backgroundColor: ["#8e5ea2"]
-      }
-    ]
+      labels: [ '', '', '', '', '', '', 'Today'],
+      datasets: [
+        {
+          label: ['Hours Slept'],
+          data: user.returnHoursSleptByWeek(),
+          backgroundColor: ["#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd","#3e95cd", "#6082B6" ]
+        },
+        {
+          label: "Sleep Quality",
+          data: user.returnSleepQualityByWeek(),
+          backgroundColor: ["#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#702963" ]
+        }
+      ]
     },
     options: {
+      // responsive: true,
+      // maintainAspectRatio: false,
       legend: { display: false },
       title: {
         display: true,
-        text: 'Weekly Sleep Quality DisplayTitle'
+        text: 'Weekly Sleep Quality DisplayTitle',
+        responsive: true
       }
     }
-});
+  });
   
-    weeklySleepQualityChart.innerHTML = `${weeklySleepDataChartDisplay}`;
-  }
+  weeklySleepQualityChart.innerHTML = `${weeklySleepDataChartDisplay}`;
+}
 
 // function displayAllTimeSleepData() {
 
