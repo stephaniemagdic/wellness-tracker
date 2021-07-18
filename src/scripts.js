@@ -155,15 +155,9 @@ function displayAllSleepData() {
 
   displayDailySleepData(currentUserSleepData);
 
-//STEP 2 SLEEP DASHBOARD
   displayWeeklySleepData(currentUserSleepData)
 
-//STEP 3.. (NOT STARTED YET.)
-// For a user, their all-time average sleep quality and all-time average number of hours slept
-
-// bubble chart : 2 bubbles for where they are average all time and where
-// other users are.
-  // displayAllTimeSleepData(currentUserSleepData);
+  displayAllTimeSleepData(currentUserSleepData);
 }
 
 function displayDailySleepData(user) {
@@ -232,6 +226,34 @@ function displayWeeklySleepData(user) {
   weeklySleepQualityChart.innerHTML = `${weeklySleepDataChartDisplay}`;
 }
 
-// function displayAllTimeSleepData() {
+function displayAllTimeSleepData(user) {
+  let allTimeSleepChart = document.getElementById('all-time-sleep')
 
-// }
+  let allTimeSleepChartDisplay = new Chart(allTimeSleepChart, {
+    type: 'bar',
+    data: {
+      labels: ["Average Hours Slept", "Average Sleep Quality"],
+      datasets: [{
+        //TO DO: FIX THIS LABEL.
+        // label: "Average",
+        data: [
+          user.calculateAverageHoursSlept(),
+          user.calculateAverageSleepQuality()
+        ],
+        backgroundColor: ["#3e95cd", "#8e5ea2"],
+      }],
+      options: {
+        // responsive: true,
+        // maintainAspectRatio: false,
+        legend: { display: false },
+        title: {
+          display: true,
+          text: 'Weekly Sleep Quality DisplayTitle',
+          responsive: true
+        }
+      }
+    }
+  });
+
+  allTimeSleepChart.innerHTML = `${allTimeSleepChartDisplay}`;
+}
