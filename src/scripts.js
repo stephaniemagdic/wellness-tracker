@@ -1,5 +1,4 @@
 import './css/styles.css';
-import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
 import SleepRepository from './SleepRepository';
