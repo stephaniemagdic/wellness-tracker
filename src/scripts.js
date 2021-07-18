@@ -105,13 +105,13 @@ function displayDailyHydrationData(user) {
   let dailyHydrationDataChartDisplay = new Chart(dailyHydrationDataChart, {
     type: 'bar',
     data: {
-      labels: ["Ounces Consumed", "% of Daily Goal"], // add % of Daily Goal?
+      labels: ['Ounces Consumed', '% of Daily Goal'], // add % of Daily Goal?
       datasets: [{
-        label: "By Day",
+        label: 'By Day',
         data: [
           user.returnOuncesDrank(),
         ],
-        backgroundColor: ["#3e95cd"],
+        backgroundColor: ['#3e95cd'],
       }],
     }
   });
@@ -120,8 +120,8 @@ function displayDailyHydrationData(user) {
 }
 
 function displayWeeklyHydrationData(user) {
-  let weeklyHydrationChart = document.getElementById('weekly-hydration');
-  let weeklyHydrationDataChartDisplay = new Chart(weeklyHydrationChart, {
+  const weeklyHydrationChart = document.getElementById('weekly-hydration');
+  const weeklyHydrationDataChartDisplay = new Chart(weeklyHydrationChart, {
     type: 'bar',
     data: {
       labels: ['', '', '', '', '', '', 'Today'],
@@ -129,12 +129,12 @@ function displayWeeklyHydrationData(user) {
         {
           label: 'Water Consumed Last Week',
           data: user.numDailyOuncesDrankInWeek(),
-          backgroundColor: ["#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#6082B6"]
+          backgroundColor: ['#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd', '#6082B6']
         },
         // {
-        //   label: "Parched or Hydrated",
+        //   label: 'Parched or Hydrated',
         //   data: user.returnHydrationLevelByWeek(),
-        //   backgroundColor: ["#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#702963"]
+        //   backgroundColor: ['#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#702963']
         // }
       ]
     },
@@ -158,14 +158,14 @@ function displayWeeklyHydrationData(user) {
 //   let allTimeHydrationChartDisplay = new Chart(allTimeHydrationChart, {
 //     type: 'bar',
 //     data: {
-//       labels: ["Average Ounces Slept", "Average Hydration Quality"],
+//       labels: ['Average Ounces Slept', 'Average Hydration Quality'],
 //       datasets: [{
-//         label: "Overall Hydration",
+//         label: 'Overall Hydration',
 //         data: [
 //           user.calculateAverageOuncesConsumed(),
 //           user.calculateAverageHydrationLevel()
 //         ],
-//         backgroundColor: ["#3e95cd", "#8e5ea2"],
+//         backgroundColor: ['#3e95cd', '#8e5ea2'],
 //       }],
 //       options: {
 //         // responsive: true,
@@ -196,18 +196,18 @@ function displayAllSleepData() {
 }
 
 function displayDailySleepData(user) {
-  let dailySleepDataChart = document.getElementById('daily-sleep')
-  let dailySleepDataChartDisplay = new Chart(dailySleepDataChart, {
+  const dailySleepDataChart = document.getElementById('daily-sleep')
+  const dailySleepDataChartDisplay = new Chart(dailySleepDataChart, {
     type: 'bar',
     data: {
-      labels: ["Hours Slept", "Sleep Quality"],
+      labels: ['Hours Slept', 'Sleep Quality'],
       datasets: [{
-        label: "By Day",
+        label: 'By Day',
         data: [
           user.returnHoursSlept(),
           user.returnSleepQuality()
         ],
-        backgroundColor: ["#3e95cd", "#8e5ea2"],
+        backgroundColor: ['#3e95cd', '#8e5ea2'],
       }],
       options: {
         // responsive: true,
@@ -226,8 +226,8 @@ function displayDailySleepData(user) {
 }
 
 function displayWeeklySleepData(user) {
-  let weeklySleepQualityChart = document.getElementById('weekly-sleep');
-  let weeklySleepDataChartDisplay = new Chart(weeklySleepQualityChart, {
+  const weeklySleepQualityChart = document.getElementById('weekly-sleep');
+  const weeklySleepDataChartDisplay = new Chart(weeklySleepQualityChart, {
     type: 'bar', 
     data: {
       labels: [ '', '', '', '', '', '', 'Today'],
@@ -235,12 +235,12 @@ function displayWeeklySleepData(user) {
         {
           label: 'Hours Slept',
           data: user.returnHoursSleptByWeek(),
-          backgroundColor: ["#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd","#3e95cd", "#6082B6" ]
+          backgroundColor: ['#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd','#3e95cd', '#6082B6' ]
         },
         {
-          label: "Sleep Quality",
+          label: 'Sleep Quality',
           data: user.returnSleepQualityByWeek(),
-          backgroundColor: ["#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#702963" ]
+          backgroundColor: ['#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#702963' ]
         }
       ]
     },
@@ -260,19 +260,17 @@ function displayWeeklySleepData(user) {
 }
 
 function displayAllTimeSleepData(user) {
-  let allTimeSleepChart = document.getElementById('all-time-sleep')
-  let allTimeSleepChartDisplay = new Chart(allTimeSleepChart, {
+  const allTimeSleepChart = document.getElementById('all-time-sleep');
+  const allTimeSleepChartDisplay = new Chart(allTimeSleepChart, {
     type: 'bar',
     data: {
-      labels: ["Hours Slept"],
+      labels: ['Hours Slept'],
       datasets: [
         {
           barPercentage: 0.2,
-          label: ["Hours Slept"], 
-          data: [
-            user.calculateAverageHoursSlept()
-          ],
-          backgroundColor: ["#3e95cd"]
+          label: ['Hours Slept'], 
+          data: [user.calculateAverageHoursSlept()],
+          backgroundColor: ['#3e95cd']
         }
       ]
     },
@@ -283,26 +281,23 @@ function displayAllTimeSleepData(user) {
         title: {
           display: true,
           text: '',
-          responsive: true
+          responsive: true, 
         },
           
       }
   });
 
-  let allTimeSleepChart2 = document.getElementById('all-time-sleep-2')
-  let allTimeSleepChartDisplay2 = new Chart(allTimeSleepChart2, {
+  const allTimeSleepChart2 = document.getElementById('all-time-sleep-2')
+  const allTimeSleepChartDisplay2 = new Chart(allTimeSleepChart2, {
     type: 'bar',
       data: {
-      labels: ["Sleep Quality"],
+      labels: ['Sleep Quality'],
       datasets: [
         {
           barPercentage: 0.2,
-          label: ["Sleep Quality"], 
-          // type: "line",
-          data: [
-            user.calculateAverageSleepQuality()
-          ],
-          backgroundColor: ["#8e5ea2"]
+          label: ['Sleep Quality'], 
+          data: [user.calculateAverageSleepQuality()],
+          backgroundColor: ['#8e5ea2']
         }
       ]
     },
