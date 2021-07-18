@@ -1,19 +1,15 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS file
 import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
-
-console.log('This is the JavaScript entry file - your code begins here.');
-
-// An example of how you tell webpack to use a JS file
-
 import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
+import SleepRepository from './SleepRepository';
+import UserSleepData from './UserSleepData';
+import HydrationRepository from './HydrationRepository';
+import UserHydrationData from './UserHydrationData';
+
+
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
 
 //---------------------EVENT LISTENER--------------------------------------//
 window.addEventListener('load', loadPage);
@@ -21,11 +17,15 @@ window.addEventListener('load', loadPage);
 //---------------------GLOBAL VARIABLES--------------------------------------//
 let allUserData;
 let allHydrationData;
-let allSleeperData;
+let allSleepData;
 const welcomeName = document.querySelector(".welcome-user");
 const address = document.querySelector(".address");
-const strideLength = document.querySelector(".stride-length-text");
+const email = document.querySelector(".email")
+const strideLength = document.querySelector(".stride-length-num");
+const dailyStepGoal = document.querySelector(".daily-step-goal-num")
+const averageStepGoal = document.querySelector(".average-step-goal-num")
 
+//---------------------FETCH CALLS--------------------------------------//
 async function loadPage() {
   const dataSets = await fetchPageData();
   generateRepoClasses(dataSets);
@@ -54,8 +54,8 @@ function generateRepoClasses(dataSets) {
   //TO DO: Refactor-loop through argument to dry up.
   console.log(dataSets);
   allUserData = new UserRepository(dataSets[0].userData);
-  // allHydrationData = new HydrationRespository(dataSets[1].hydrationData);
-  // allSleeperData = new SleepRepository(dataSets[2].sleepData);
+  allHydrationData = new HydrationRepository(dataSets[1].hydrationData);
+  allSleepData = new SleepRepository(dataSets[2].sleepData);
 }
 
 async function fetchData(type) {
@@ -66,29 +66,226 @@ async function fetchData(type) {
   return promise;
 }
 
+
+//---------------------ALL DISPLAY FUNCTIONS----------------------------------//
 function loadPageInfo() {
-  //This will call invoke a function that loads our user card to start.
   displayUserCard();
-  // diplayHydrationInfo()
-    //create instance of hydration repo class
-    //create instance of hydration (holds one users hydration info)
-        //because we have to call methods on hydration class to get data in
-        //order to display this on the dom.
-  // displaysleepInfo()
-    //create instance of sleep repo class
-      //create instance of sleep class (holds one users sleep info)
-          //because we have to call methods on sleep class to get data in
-          //order to display this on the dom.
+  displayAllHydrationData();
+  displayAllSleepData();
 }
 
+
+//---------------------USER CARD--------------------------------------//
 function displayUserCard() {
-  //create instance of the userRepo.
-   const user1 = allUserData.returnUserData(1)
-   //create instance of user.
-   const currentUser = new User(user1);
-   //use that info to display properties on the dom.
-   welcomeName.innerHTML = `${currentUser.returnFirstName()}`;
-   address.innerHTML = `${currentUser.address}`;
-   strideLength.innerHTML = `${currentUser.strideLength}`
+  const user1 = allUserData.returnUserData(1)
+  const currentUser = new User(user1);
+  welcomeName.innerHTML = `${currentUser.returnFirstName()}`;
+  address.innerHTML = `${currentUser.address}`;
+  email.innerHTML = `${currentUser.email}`;
+  strideLength.innerHTML = `${currentUser.strideLength}`
+  dailyStepGoal.innerHTML = `${currentUser.dailyStepGoal}`
+  averageStepGoal.innerHTML = `${allUserData.returnAverageStepGoal()}`
 }
 
+
+//---------------------HYDRATION CHARTS --------------------------------------//
+function displayAllHydrationData() {
+  const userData = allUserData.returnUserData(1)
+  const currentUser = new User(userData);
+  const hydrationData = allHydrationData.returnUserData(currentUser.id);
+  const currentUserHydrationData = new UserHydrationData(hydrationData);
+
+  displayDailyHydrationData(currentUserHydrationData);
+  displayWeeklyHydrationData(currentUserHydrationData);
+  // displayAllTimeHydrationData(currentUserHydrationData);
+}
+
+function displayDailyHydrationData(user) {
+  let dailyHydrationDataChart = document.getElementById('daily-hydration')
+  let dailyHydrationDataChartDisplay = new Chart(dailyHydrationDataChart, {
+    type: 'bar',
+    data: {
+      labels: ["Ounces Consumed", "% of Daily Goal"], // add % of Daily Goal?
+      datasets: [{
+        label: "By Day",
+        data: [
+          user.returnOuncesDrank(),
+        ],
+        backgroundColor: ["#3e95cd"],
+      }],
+    }
+  });
+
+  dailyHydrationDataChart.innerHTML = `${dailyHydrationDataChartDisplay}`;
+}
+
+function displayWeeklyHydrationData(user) {
+  let weeklyHydrationChart = document.getElementById('weekly-hydration');
+  let weeklyHydrationDataChartDisplay = new Chart(weeklyHydrationChart, {
+    type: 'bar',
+    data: {
+      labels: ['', '', '', '', '', '', 'Today'],
+      datasets: [
+        {
+          label: 'Water Consumed Last Week',
+          data: user.numDailyOuncesDrankInWeek(),
+          backgroundColor: ["#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#6082B6"]
+        },
+        // {
+        //   label: "Parched or Hydrated",
+        //   data: user.returnHydrationLevelByWeek(),
+        //   backgroundColor: ["#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#702963"]
+        // }
+      ]
+    },
+    options: {
+      // responsive: true,
+      // maintainAspectRatio: false,
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Weekly Hydration Level Display Title',
+        responsive: true
+      }
+    }
+  });
+
+  weeklyHydrationChart.innerHTML = `${weeklyHydrationDataChartDisplay}`;
+}
+// we don't technically need this chart?
+// function displayAllTimeHydrationData(user) {
+//   let allTimeHydrationChart = document.getElementById('all-time-hydration')
+//   let allTimeHydrationChartDisplay = new Chart(allTimeHydrationChart, {
+//     type: 'bar',
+//     data: {
+//       labels: ["Average Ounces Slept", "Average Hydration Quality"],
+//       datasets: [{
+//         label: "Overall Hydration",
+//         data: [
+//           user.calculateAverageOuncesConsumed(),
+//           user.calculateAverageHydrationLevel()
+//         ],
+//         backgroundColor: ["#3e95cd", "#8e5ea2"],
+//       }],
+//       options: {
+//         // responsive: true,
+//         // maintainAspectRatio: false,
+//         legend: { display: false },
+//         title: {
+//           display: true,
+//           text: 'Overall Hydration',
+//           responsive: true
+//         }
+//       }
+//     }
+//   });
+
+//   allTimeHydrationChart.innerHTML = `${allTimeHydrationChartDisplay}`;
+// }
+
+//---------------------SLEEP CHARTS --------------------------------------//
+function displayAllSleepData() {
+  const userData = allUserData.returnUserData(1)
+  const currentUser = new User(userData);
+  const sleepData = allSleepData.returnUserData(currentUser.id);
+  const currentUserSleepData = new UserSleepData(sleepData);
+
+  displayDailySleepData(currentUserSleepData);
+  displayWeeklySleepData(currentUserSleepData);
+  displayAllTimeSleepData(currentUserSleepData);
+}
+
+function displayDailySleepData(user) {
+  let dailySleepDataChart = document.getElementById('daily-sleep')
+  let dailySleepDataChartDisplay = new Chart(dailySleepDataChart, {
+    type: 'bar',
+    data: {
+      labels: ["Hours Slept", "Sleep Quality"],
+      datasets: [{
+        label: "By Day",
+        data: [
+          user.returnHoursSlept(),
+          user.returnSleepQuality()
+        ],
+        backgroundColor: ["#3e95cd", "#8e5ea2"],
+      }],
+      options: {
+        // responsive: true,
+        // maintainAspectRatio: false,
+        legend: { display: false },
+        title: {
+          display: true,
+          text: 'Weekly Sleep Quality DisplayTitle',
+          responsive: true
+        }
+      }
+    }
+  });
+
+  dailySleepDataChart.innerHTML = `${dailySleepDataChartDisplay}`;
+}
+
+function displayWeeklySleepData(user) {
+  let weeklySleepQualityChart = document.getElementById('weekly-sleep');
+  let weeklySleepDataChartDisplay = new Chart(weeklySleepQualityChart, {
+    type: 'bar', 
+    data: {
+      labels: [ '', '', '', '', '', '', 'Today'],
+      datasets: [
+        {
+          label: 'Hours Slept',
+          data: user.returnHoursSleptByWeek(),
+          backgroundColor: ["#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd","#3e95cd", "#6082B6" ]
+        },
+        {
+          label: "Sleep Quality",
+          data: user.returnSleepQualityByWeek(),
+          backgroundColor: ["#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#8e5ea2", "#702963" ]
+        }
+      ]
+    },
+    options: {
+      // responsive: true,
+      // maintainAspectRatio: false,
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Weekly Sleep Quality DisplayTitle',
+        responsive: true
+      }
+    }
+  });
+  
+  weeklySleepQualityChart.innerHTML = `${weeklySleepDataChartDisplay}`;
+}
+
+function displayAllTimeSleepData(user) {
+  let allTimeSleepChart = document.getElementById('all-time-sleep')
+  let allTimeSleepChartDisplay = new Chart(allTimeSleepChart, {
+    type: 'bar',
+    data: {
+      labels: ["Average Hours Slept", "Average Sleep Quality"],
+      datasets: [{
+        //TO DO: FIX THIS LABEL.
+        label: "Overall Sleep Quality",
+        data: [
+          user.calculateAverageHoursSlept(),
+          user.calculateAverageSleepQuality()
+        ],
+        backgroundColor: ["#3e95cd", "#8e5ea2"],
+      }],
+      options: {
+        // responsive: true,
+        // maintainAspectRatio: false,
+        legend: { display: false },
+        title: {
+          display: true,
+          text: 'Weekly Sleep Quality DisplayTitle',
+          responsive: true
+        }
+      }
+    }
+  });
+
+  allTimeSleepChart.innerHTML = `${allTimeSleepChartDisplay}`;
+}

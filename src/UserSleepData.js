@@ -4,10 +4,17 @@ class UserSleepData {
   } 
 
   calculateAverageHoursSlept() {
-    const totalHoursSlept  = this.sleepData.reduce((sum, sleepItem) => {
+    const totalHoursSlept = this.sleepData.reduce((sum, sleepItem) => {
       return sum + sleepItem.hoursSlept;
     }, 0);
     return parseFloat((totalHoursSlept / this.sleepData.length).toFixed(1));
+  }
+
+  calculateAverageSleepQuality() {
+    const totalSleepQuality = this.sleepData.reduce((sum, sleepItem) => {
+      return sum + sleepItem.sleepQuality;
+    }, 0);
+    return parseFloat((totalSleepQuality / this.sleepData.length).toFixed(1));
   }
 
   returnHoursSlept(date = (this.sleepData[this.sleepData.length - 1].date)) {
