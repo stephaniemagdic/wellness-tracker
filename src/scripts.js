@@ -156,7 +156,7 @@ function displayAllSleepData() {
   displayDailySleepData(currentUserSleepData);
 
 //STEP 2 SLEEP DASHBOARD
-  // displayWeeklySleepData(currentUserSleepData)
+  displayWeeklySleepData(currentUserSleepData)
 
 //STEP 3.. (NOT STARTED YET.)
 // For a user, their all-time average sleep quality and all-time average number of hours slept
@@ -191,7 +191,43 @@ function displayDailySleepData(user) {
 }
 
 function displayWeeklySleepData(user) {
-    
+
+  // let dates = []
+  const weekOfHoursSlept = user.returnHoursSleptByWeek();
+  let weeklySleepQualityChart = document.getElementById('weekly-sleep')
+  console.log([...weekOfHoursSlept])
+  
+  //.getContect('2d');
+
+  let weeklySleepDataChartDisplay = new Chart(weeklySleepQualityChart, {
+    type: 'bar', 
+    data: {
+    // labels: ["7 dates will be listed here"],
+    labels: [ 'M', 'T', 'W', 'T', 'F', 'S', 'S'],
+    datasets: [
+      //HOURS SLEPT LABEL
+      {
+        label: ['Hours Slept'],
+        data: [...weekOfHoursSlept],
+        backgroundColor: ["#3e95cd"]
+      },
+      {
+        label: "Sleep Quality",
+        data:user.returnSleepQualityByWeek(),
+        backgroundColor: ["#8e5ea2"]
+      }
+    ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Weekly Sleep Quality DisplayTitle'
+      }
+    }
+});
+  
+    weeklySleepQualityChart.innerHTML = `${weeklySleepDataChartDisplay}`;
   }
 
 // function displayAllTimeSleepData() {
