@@ -68,26 +68,20 @@ async function fetchData(type) {
 
 //---------------------ALL DISPLAY FUNCTIONS----------------------------------//
 function loadPageInfo() {
-  //generate random user
-  // look through user repo and grab random user.
-  //var item = items[Math.floor(Math.random()*items.length)];
-
   const user = allUserData.userData[Math.floor(Math.random()* allUserData.userData.length)]
+
   console.log(allUserData, user);
 
-  //pass in as argument to all three functions below.
-  
-
-  displayUserCard();
+  displayUserCard(user);
   displayAllHydrationData();
   displayAllSleepData();
 }
 
 
 //---------------------USER CARD--------------------------------------//
-function displayUserCard() {
-  const user1 = allUserData.returnUserData(1)
-  const currentUser = new User(user1);
+function displayUserCard(user) {
+  const userData = allUserData.returnUserData(user.id)
+  const currentUser = new User(userData);
   welcomeName.innerHTML = `${currentUser.returnFirstName()}`;
   address.innerHTML = `${currentUser.address}`;
   email.innerHTML = `${currentUser.email}`;
