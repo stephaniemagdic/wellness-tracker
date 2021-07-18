@@ -69,36 +69,17 @@ async function fetchData(type) {
 
 
 
-//---------------------DISPLAY FUNCTIONS--------------------------------------//
-
+//---------------------ALL DISPLAY FUNCTIONS----------------------------------//
 function loadPageInfo() {
-  //This will call invoke a function that loads our user card to start.
   displayUserCard();
-  displayAverageStepGoal();
   displayAllHydrationData();
-  // function to set up first chart
-  // function to set up second chart 
-  // function to set up third chart
-
-  //create instance of UserHydrationData class
-  //create instance of hydration (holds one users hydration info)
-      //because we have to call methods on hydration class to get data in
-      //order to display this on the dom.
   displayAllSleepData();
-  // function to set up first chart
-  // function to set up second chart 
-  // function to set up third chart
- 
-  //create instance of UserSleepData class
-    //create instance of sleep class (holds one users sleep info)
-        //because we have to call methods on sleep class to get data in
-        //order to display this on the dom.
 }
 
 
 
 
-//---------------------USER CARD --------------------------------------//
+//---------------------USER CARD--------------------------------------//
 function displayUserCard() {
    const user1 = allUserData.returnUserData(1)
    const currentUser = new User(user1);
@@ -107,30 +88,45 @@ function displayUserCard() {
    email.innerHTML = `${currentUser.email}`;
    strideLength.innerHTML = `${currentUser.strideLength}`
    dailyStepGoal.innerHTML = `${currentUser.dailyStepGoal}`
-   //TO DO
-      //display User step goal from here instead.
+   averageStepGoal.innerHTML = `${allUserData.returnAverageStepGoal()}`
 }
-
-function displayAverageStepGoal() {
-  averageStepGoal.innerHTML = `${allUserData.returnAverageStepGoal()}`
-}
-
-
-
 
 
 //---------------------HYDRATION CHARTS --------------------------------------//
-function displayAllHydrationData(hydroData) {
-  let dailyHydoDataChart = document.getElementById('hydration-chart')
-  //.getContect('2d');
-  // displayDailyHydrationData();
+function displayAllHydrationData() {
+  const userData = allUserData.returnUserData(1)
+  const currentUser = new User(userData);
+
+  const hydrationData = allHydrationData.returnUserData(currentUser.id);
+  const currentUserHydrationData = new UserHydrationData(hydrationData);
+
+  displayDailyHydrationData(currentUserHydrationData);
   // displayWeeklyHydrationData();
   // displayAllTimeHydrationData();
 }
 
-// function displayDailyHydrationData() {
+function displayDailyHydrationData(user) {
+  let dailyHydrationDataChart = document.getElementById('daily-hydration')
+  //.getContect('2d');
+  let dailyHydrationDataChartDisplay = new Chart(dailyHydrationDataChart, {
+    type: 'bar',
+    data: {
+      labels: ["Ounces Drank", "Daily Goal"],
+      datasets: [{
+        label: "By Day",
+        data: [
+          user.returnOuncesDrank(),
+        ],
+        backgroundColor: ["#3e95cd"],
+      }],
+      //TO DO: data labels: true! put numbers there so data is easy to read.
+      // options: {} //
+    }
+  });
 
-// }
+  dailyHydrationDataChart.innerHTML = `${dailyHydrationDataChartDisplay}`;
+}
+
 
 // function displayWeeklyHydrationData() {
 

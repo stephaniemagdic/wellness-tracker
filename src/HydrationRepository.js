@@ -3,7 +3,7 @@ class HydrationRepository {
     this.hydroData = hydroData;
   }
 
- filterUserHydroData(id) {
+ returnUserData(id) {
    return this.hydroData.filter(hydroItem => hydroItem.userID === id)
  }
 }
