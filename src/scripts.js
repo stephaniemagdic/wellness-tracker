@@ -68,9 +68,12 @@ async function fetchData(type) {
 
 //---------------------ALL DISPLAY FUNCTIONS----------------------------------//
 function loadPageInfo() {
-  const user = allUserData.userData[Math.floor(Math.random()* allUserData.userData.length)]
+  const randomUser = allUserData.userData[Math.floor(Math.random()* allUserData.userData.length)]
 
-  console.log(allUserData, user);
+  // console.log(allUserData, user);
+
+  // const userData = allUserData.returnUserData(user.id)
+  const user = new User(allUserData.returnUserData(randomUser.id));
 
   displayUserCard(user);
   displayAllHydrationData(user);
@@ -93,9 +96,9 @@ function displayUserCard(user) {
 
 //---------------------HYDRATION CHARTS --------------------------------------//
 function displayAllHydrationData(user) {
-  const userData = allUserData.returnUserData(user.id)
-  const currentUser = new User(userData);
-  const hydrationData = allHydrationData.returnUserData(currentUser.id);
+  // const userData = allUserData.returnUserData(user.id)
+  // const currentUser = new User(userData);
+  const hydrationData = allHydrationData.returnUserData(user.id);
   const currentUserHydrationData = new UserHydrationData(hydrationData);
 
   displayDailyHydrationData(currentUserHydrationData);
@@ -188,9 +191,9 @@ function displayWeeklyHydrationData(user) {
 
 //---------------------SLEEP CHARTS --------------------------------------//
 function displayAllSleepData(user) {
-  const userData = allUserData.returnUserData(user.id)
-  const currentUser = new User(userData);
-  const sleepData = allSleepData.returnUserData(currentUser.id);
+  // const userData = allUserData.returnUserData(user.id)
+  // const currentUser = new User(userData);
+  const sleepData = allSleepData.returnUserData(user.id);
   const currentUserSleepData = new UserSleepData(sleepData);
 
   displayDailySleepData(currentUserSleepData);
