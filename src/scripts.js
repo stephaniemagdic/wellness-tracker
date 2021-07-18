@@ -74,7 +74,7 @@ function loadPageInfo() {
 
   displayUserCard(user);
   displayAllHydrationData(user);
-  displayAllSleepData();
+  displayAllSleepData(user);
 }
 
 
@@ -187,8 +187,8 @@ function displayWeeklyHydrationData(user) {
 // }
 
 //---------------------SLEEP CHARTS --------------------------------------//
-function displayAllSleepData() {
-  const userData = allUserData.returnUserData(1)
+function displayAllSleepData(user) {
+  const userData = allUserData.returnUserData(user.id)
   const currentUser = new User(userData);
   const sleepData = allSleepData.returnUserData(currentUser.id);
   const currentUserSleepData = new UserSleepData(sleepData);
