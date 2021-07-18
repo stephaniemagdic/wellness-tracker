@@ -73,7 +73,7 @@ function loadPageInfo() {
   console.log(allUserData, user);
 
   displayUserCard(user);
-  displayAllHydrationData();
+  displayAllHydrationData(user);
   displayAllSleepData();
 }
 
@@ -92,8 +92,8 @@ function displayUserCard(user) {
 
 
 //---------------------HYDRATION CHARTS --------------------------------------//
-function displayAllHydrationData() {
-  const userData = allUserData.returnUserData(1)
+function displayAllHydrationData(user) {
+  const userData = allUserData.returnUserData(user.id)
   const currentUser = new User(userData);
   const hydrationData = allHydrationData.returnUserData(currentUser.id);
   const currentUserHydrationData = new UserHydrationData(hydrationData);
