@@ -87,6 +87,14 @@ describe('UserHydrationData', () => {
     expect(dailyAverage).to.equal(59.7);
   });
 
+  it('should show \'Parched\' if average ounces drank is below average'', () => {
+    const showParched = userHydrationData.displayOverallHydration();
+    expect(showParched).to.equal('Parched');
+  });
 
+  it('should show \'Hydrated\' if average ounces drank is above average'', () => {
+    const showHydrated = userHydrationData.displayOverallHydration();
+    expect(showHydrated).to.equal('Hydrated');
+  });
 })
 
