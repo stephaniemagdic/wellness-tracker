@@ -68,30 +68,28 @@ async function fetchData(type) {
 
 //---------------------ALL DISPLAY FUNCTIONS----------------------------------//
 function loadPageInfo() {
-  displayUserCard();
-  displayAllHydrationData();
-  displayAllSleepData();
+  const randomUser = allUserData.userData[Math.floor(Math.random()* allUserData.userData.length)]
+  const user = new User(allUserData.returnUserData(randomUser.id));
+  displayUserCard(user);
+  displayAllHydrationData(user);
+  displayAllSleepData(user);
 }
 
 
 //---------------------USER CARD--------------------------------------//
-function displayUserCard() {
-  const user1 = allUserData.returnUserData(1)
-  const currentUser = new User(user1);
-  welcomeName.innerHTML = `${currentUser.returnFirstName()}`;
-  address.innerHTML = `${currentUser.address}`;
-  email.innerHTML = `${currentUser.email}`;
-  strideLength.innerHTML = `${currentUser.strideLength}`
-  dailyStepGoal.innerHTML = `${currentUser.dailyStepGoal}`
+function displayUserCard(user) {
+  welcomeName.innerHTML = `${user.returnFirstName()}`;
+  address.innerHTML = `${user.address}`;
+  email.innerHTML = `${user.email}`;
+  strideLength.innerHTML = `${user.strideLength}`
+  dailyStepGoal.innerHTML = `${user.dailyStepGoal}`
   averageStepGoal.innerHTML = `${allUserData.returnAverageStepGoal()}`
 }
 
 
 //---------------------HYDRATION CHARTS --------------------------------------//
-function displayAllHydrationData() {
-  const userData = allUserData.returnUserData(1)
-  const currentUser = new User(userData);
-  const hydrationData = allHydrationData.returnUserData(currentUser.id);
+function displayAllHydrationData(user) {
+  const hydrationData = allHydrationData.returnUserData(user.id);
   const currentUserHydrationData = new UserHydrationData(hydrationData);
 
   displayDailyHydrationData(currentUserHydrationData);
@@ -183,12 +181,9 @@ function displayWeeklyHydrationData(user) {
 // }
 
 //---------------------SLEEP CHARTS --------------------------------------//
-function displayAllSleepData() {
-  const userData = allUserData.returnUserData(1)
-  const currentUser = new User(userData);
-  const sleepData = allSleepData.returnUserData(currentUser.id);
+function displayAllSleepData(user) {
+  const sleepData = allSleepData.returnUserData(user.id);
   const currentUserSleepData = new UserSleepData(sleepData);
-
   displayDailySleepData(currentUserSleepData);
   displayWeeklySleepData(currentUserSleepData);
   displayAllTimeSleepData(currentUserSleepData);
@@ -197,7 +192,6 @@ function displayAllSleepData() {
 function displayDailySleepData(user) {
   const dailySleepHoursButton = document.getElementById('daily-sleep-hours');
   const dailySleepDataButton = document.getElementById('daily-sleep-quality');
-
   dailySleepHoursButton.innerHTML = `${user.returnHoursSlept()}`;
   console.log(user.returnHoursSlept());
   console.log(user.returnSleepQuality());
@@ -241,7 +235,6 @@ function displayWeeklySleepData(user) {
 function displayAllTimeSleepData(user) {
   const allTimeSleepButton = document.getElementById('all-time-sleep');
   const allTimeSleepButton2 = document.getElementById('all-time-sleep-2');
-
   allTimeSleepButton.innerHTML = `${user.calculateAverageHoursSlept()}`;
   allTimeSleepButton2.innerHTML = `${user.calculateAverageSleepQuality()}`;
 }
