@@ -86,7 +86,5 @@ describe('UserHydrationData', () => {
     const dailyAverage = userHydrationData.calculateAverageOuncesConsumed(1);
     expect(dailyAverage).to.equal(59.7);
   });
-
-
 })
 
