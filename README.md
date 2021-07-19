@@ -95,3 +95,7 @@ To exit node on a mac, choose `cntrl + c`!
 ### Project Wins
  * xx
  * xx
+
+### Future Itterations
+  * In the future, we would like to create a date input field to allow users to search for data on specific days/weeks.
+    * Note: Methods and tests are included in classes in order to sort through and gather this data and display it on the page.
