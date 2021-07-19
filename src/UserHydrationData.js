@@ -18,8 +18,18 @@ class UserHydrationData {
       return sum + hydroItem.numOunces;
     }, 0);
     return parseFloat((totalOuncesConsumed / this.hydroData.length).toFixed(1));
-    }
   }
+}
+
+  // displayOverallHydration() {
+  //   const overallHydration = this.hydroData.calculateAverageOuncesConsumed()
+  //     if (overallHydration > 50) {
+  //       return 'Hydrated' 
+  //     } else if (overallHydration < 50) {
+  //       return 'Parched'
+  //     }
+  //   }
+
 
  
 export default UserHydrationData;
