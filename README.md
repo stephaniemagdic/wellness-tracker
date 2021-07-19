@@ -1,82 +1,97 @@
-# FitLit Starter Kit
+# Fitlit Wellness Tracker
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+#### [Project Spec](https://frontend.turing.edu/projects/fitlit.html)
 
-## Setup
+##### Week 8 (Mod2) at Turing School of Software and Design
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
+## Project Description
 
-## Testing
+Use our app along with and run a local server from your machine by following the set-up instructions to fetch mock user data to populate the page with new user data everytime the page is loaded.
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+This project:
+  - This project implements the fetch API to access data from a local server.
+  - This project uses array prototype methods.
+  - /// responsive.
+  - This project uses the fetch API to make network requests to API endpoints to retrieve and manipulate data.
 
-## Linting Your Code
+ 
+### Built-By:
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
+[Stephanie Magdic](https://github.com/stephaniemagdic)
+[Sarah Rudy](https://github.com/sarahrudy)
 
-Your linter will look only at the JavaScript files you have within the `src` and the `test` directories.
 
-## Data Model
+### Technologies Used 
 
-**Users**
+* JavaScript (ECMAScript 2009)
+* NPM packages/dependencies: 
+  * [chart.js](https://www.chartjs.org/)
+  * [Webpack](https://www.npmjs.com/package/webpack): a helpful developer tool (npm package we install as a dev dependency)
+* Mocha test framework and Chai TDD assertion library
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
 
-**Activity**
+### Architecture
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
+* dist directory
+  * [bundle.js](https://www.simplethread.com/javascript-modules-and-code-bundling-explained/): our minified file that webpack creates for our browser!
+  * index.html 
+* src directory
+  * ES6 class files
+    * Class Structure Example:
+      * UserSleepRepository: holds sleep data for `all` users. Has methods that uses/manipulates just all users data. 
+      * UserSleepData: holds sleep data for `one` user. Has methods that uses/manipulates just one user's data.  
+  * scripts.js: holds our application logic, including fetching data from our local server and manipulating the dom.
+* test directory
+* README.md
 
-**Hydration**
+## Instructions for running and viewing
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
+###Set-up:
 
-**Sleep**
+Note: You must run both your local server and the fitlit application at the same time to use this application.
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+####Step 1: Run your local server.
+  * Go to the [fitlit-API](https://github.com/turingschool-examples/fitlit-api) and follow the instructions in the README.md to run your local server.
+  * Make sure that server is running in your terminal by checking that you see the following message in your terminal.
+####Step 2: Run the fitlit application/client.
+  * You can access the fitlit wellness tracker by `cloning this repository`, navigating to and `opening up your terminal`, and running the command `npm start` in your cloned project directory. This will run the bundle.js file, which will ... (//wording)
+  * You will see the following message in your terminal: 
+  * Copy and paste that link in your browser to view the application. 
+  
+Note: Make sure to run `npm install` in your terminal after cloning the repository to install dependencies needed for the application to run!
+To exit node on a mac, choose `cntrl + c`!
+
+
+* **How to Navigate our application:**  
+  
+![x](x)
+
+* **See User Info Card Data:**  
+  * xx
+  * xx
+
+* **View Hydration Data:** 
+  * xx
+  * xx
+
+![x](x)
+
+* **View Sleep Data!:**  
+  * xx
+  * xx
+
+* ** xx :**  
+  * xx
+  * xx
+
+* **Refresh the page to see a new user's wellness data!:**  
+  * xx
+  * xx
+
+### Project Challenges 
+ * xx
+ * xx
+ 
+### Project Wins
+ * xx
+ * xx
