@@ -18,8 +18,8 @@ class UserHydrationData {
       return sum + hydroItem.numOunces;
     }, 0);
     return parseFloat((totalOuncesConsumed / this.hydroData.length).toFixed(1));
-    }
   }
+}
 
  
 export default UserHydrationData;
