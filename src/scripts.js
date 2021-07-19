@@ -69,12 +69,7 @@ async function fetchData(type) {
 //---------------------ALL DISPLAY FUNCTIONS----------------------------------//
 function loadPageInfo() {
   const randomUser = allUserData.userData[Math.floor(Math.random()* allUserData.userData.length)]
-
-  // console.log(allUserData, user);
-
-  // const userData = allUserData.returnUserData(user.id)
   const user = new User(allUserData.returnUserData(randomUser.id));
-
   displayUserCard(user);
   displayAllHydrationData(user);
   displayAllSleepData(user);
@@ -83,8 +78,6 @@ function loadPageInfo() {
 
 //---------------------USER CARD--------------------------------------//
 function displayUserCard(user) {
-  // const userData = allUserData.returnUserData(user.id)
-  // const currentUser = new User(userData);
   welcomeName.innerHTML = `${user.returnFirstName()}`;
   address.innerHTML = `${user.address}`;
   email.innerHTML = `${user.email}`;
@@ -96,8 +89,6 @@ function displayUserCard(user) {
 
 //---------------------HYDRATION CHARTS --------------------------------------//
 function displayAllHydrationData(user) {
-  // const userData = allUserData.returnUserData(user.id)
-  // const currentUser = new User(userData);
   const hydrationData = allHydrationData.returnUserData(user.id);
   const currentUserHydrationData = new UserHydrationData(hydrationData);
 
@@ -191,11 +182,8 @@ function displayWeeklyHydrationData(user) {
 
 //---------------------SLEEP CHARTS --------------------------------------//
 function displayAllSleepData(user) {
-  // const userData = allUserData.returnUserData(user.id)
-  // const currentUser = new User(userData);
   const sleepData = allSleepData.returnUserData(user.id);
   const currentUserSleepData = new UserSleepData(sleepData);
-
   displayDailySleepData(currentUserSleepData);
   displayWeeklySleepData(currentUserSleepData);
   displayAllTimeSleepData(currentUserSleepData);
@@ -204,7 +192,6 @@ function displayAllSleepData(user) {
 function displayDailySleepData(user) {
   const dailySleepHoursButton = document.getElementById('daily-sleep-hours');
   const dailySleepDataButton = document.getElementById('daily-sleep-quality');
-
   dailySleepHoursButton.innerHTML = `${user.returnHoursSlept()}`;
   console.log(user.returnHoursSlept());
   console.log(user.returnSleepQuality());
@@ -248,7 +235,6 @@ function displayWeeklySleepData(user) {
 function displayAllTimeSleepData(user) {
   const allTimeSleepButton = document.getElementById('all-time-sleep');
   const allTimeSleepButton2 = document.getElementById('all-time-sleep-2');
-
   allTimeSleepButton.innerHTML = `${user.calculateAverageHoursSlept()}`;
   allTimeSleepButton2.innerHTML = `${user.calculateAverageSleepQuality()}`;
 }
