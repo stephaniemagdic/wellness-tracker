@@ -164,7 +164,6 @@ function displayWeeklyHydrationData(user) {
 
 //---------------------SLEEP CHARTS --------------------------------------//
 function displayAllSleepData(user) {
-  const sleepData = allSleepData.returnUserData(user.id);
   const currentUserSleepData = new UserSleepData(allSleepData.returnUserData(user.id));
   displayDailySleepData(currentUserSleepData);
   displayWeeklySleepData(currentUserSleepData);
