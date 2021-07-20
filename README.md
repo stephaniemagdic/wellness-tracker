@@ -76,9 +76,9 @@ Note: You must run both your local server and the fitlit application at the same
 
 [Responsive Design Gif: Click to View](https://i.ibb.co/DzZs9hd/short.gif) 
 
-[](https://i.ibb.co/VHpwbty/Screen-Shot-2021-07-20-at-2-57-49-PM.png)
-[](https://i.ibb.co/JHK42cj/Screen-Shot-2021-07-20-at-2-57-36-PM.png)
-[](https://i.ibb.co/XFVmjMW/Screen-Shot-2021-07-20-at-2-57-01-PM.png)
+[Img](https://i.ibb.co/VHpwbty/Screen-Shot-2021-07-20-at-2-57-49-PM.png)
+[Img](https://i.ibb.co/JHK42cj/Screen-Shot-2021-07-20-at-2-57-36-PM.png)
+[Img](https://i.ibb.co/XFVmjMW/Screen-Shot-2021-07-20-at-2-57-01-PM.png)
 
 ### Project Challenges 
  * Not having a well laid out plan for how we wanted each piece of our data to display set us back. After much time working to display some data with charts we realized that data might be better shown in a simpler non-comparative format. This set-back helped us to learn that in furture projects it's important to really plan ahead and have a clearly identified goal before jumping in.
