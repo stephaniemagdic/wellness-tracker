@@ -59,6 +59,7 @@ address, .email {
   font-size: medium;
   font-weight: 400;
   text-align: left;
+  flex-wrap: wrap;
   padding: 10px 0 0 0;
 }
 
@@ -145,6 +146,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: stretch;
+    padding: 10px;
   }
 
   header {
@@ -154,7 +156,6 @@ main {
   .all-user-info-section {
     display: flex;
     flex-wrap: wrap;
-    padding: 10px;
   }
 
   canvas {
@@ -187,11 +188,19 @@ main {
   
   .friends-section {
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .friends-section div {
+    flex: 1;
+  }
+
+  .all-friends {
+    display: none
   }
 
   #all-friends-img {
     display: none
   }
-}
+} 
