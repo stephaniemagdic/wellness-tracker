@@ -16,22 +16,17 @@ white: #FFFFFF */
 *,
 *:after,
 *:before {
-  box-sizing: border-box;
-  margin: 0;
   padding: 3px;
   font-weight: 700;
 }
 
 * {
   font-family: 'Open Sans', sans-serif;
-  /* border: 2px solid red; */
 }
 
 body {
   display: flex;
-  background-color: #f4f0ec;
-  color: #3F3F3F;
-  height: 100%;
+  background-color: #dcdcdc;
   font-weight: 700;
 }
 
@@ -63,13 +58,13 @@ h1 {
 
 /* LEFT-TOP */
 aside {
-  display: flex;
   flex-direction: column;
-  min-height: 100%;
+  min-height: 100vh;
   width: 20%;
 }
 
 header {
+  align-items: flex-end;
   font-size: xx-large;
   height: 10%;
   border-bottom: 1px solid #707070;
@@ -79,6 +74,7 @@ address, .email {
   font-size: medium;
   font-weight: 400;
   text-align: left;
+  padding: 10px 0 0 0;
 }
 
 img {
@@ -93,10 +89,15 @@ img {
   height: 65%;
 }
 
+.user-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 
 /* LEFT-BOTTOM */
 .avg-step-section{
-  /* display: flex; */
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
@@ -105,7 +106,6 @@ img {
 
 /* RIGHT-TOP */
 main {
-  /* display: flex; */
   flex-direction: column; 
   height: 75%;
   width: 80%;
@@ -113,13 +113,12 @@ main {
 
 .all-user-info-section {
   display: flex;
-  /* flex-direction: row; */
   justify-content: center;
   align-items: stretch;
   height: 75%;
 }
 
-.row-header1 {
+.row-header {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -128,6 +127,7 @@ main {
 }
 
 .top-row, .middle-row, bottom-row {
+  justify-content: stretch;
   height: 30%;
 }
 
@@ -138,14 +138,12 @@ main {
 
 .sleep-img, .hydration-img {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
 /* RIGHT-BOTTOM */
 .friends-section {
   display: flex;
-  /* flex-direction: row; */
   height: 25%;
   border-top: 1px solid #707070;
 }
@@ -157,11 +155,63 @@ main {
   height: 25%;
 }
 
-/* RESPONSIVE DISPLAYS */
-@media screen and (max-width 500px) {
-  .aside, .main {
+/* RESPONSIVE DISPLAY */
+@media screen and (max-width: 320px) {
+  body {
     display: flex;
-    width: 100%;
+    flex-wrap: wrap;
+    justify-content: stretch;
+  }
+
+  header {
+    font-size: x-large;
+  }
+
+  .all-user-info-section {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+
+  canvas {
+    flex: 1;
+  }
+
+  aside {
+   height: 50vh;
+   width: 70vw;
+  }
+
+  .friends-section {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  main {
+    flex-direction: column;
+    width: 100%
+  }
+
+  .hydration-column, .sleep-column {
+    width: 80vh;
+    border: none;
+  }
+
+  .row-header {
+    display: none;
+  }
+
+  h1 {
+    font-size: x-large;
+    padding: 30px 0 0 0;
+  }
+
+  #all-friends-img {
+    display: none
+  }
+
+  .friends-section {
+    display: flex;
+    flex-direction: column;
   }
 }
-
