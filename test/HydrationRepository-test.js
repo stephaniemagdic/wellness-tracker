@@ -5,7 +5,7 @@ describe('HydrationRepository', () => {
   let hydrationRepository
   let allHydroData = [{
     userID: 1,
-    date:"2019/06/15",
+    date: "2019/06/15",
     numOunces: 37
   },
   {
