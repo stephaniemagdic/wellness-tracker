@@ -83,7 +83,6 @@ Note: You must run both your local server and the fitlit application at the same
 ![Img](https://i.ibb.co/Kq4Y1tf/Screen-Shot-2021-07-20-at-3-16-06-PM.png)
 #### Mobile View:
 ![Img](https://i.ibb.co/JHK42cj/Screen-Shot-2021-07-20-at-2-57-36-PM.png)
-![Img](https://i.ibb.co/GP22w9v/Screen-Shot-2021-07-20-at-3-24-02-PM.png)
 ![Img](https://i.ibb.co/XFVmjMW/Screen-Shot-2021-07-20-at-2-57-01-PM.png)
 
 ### Project Challenges 
