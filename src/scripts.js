@@ -133,7 +133,7 @@ function displayDailySleepData(user) {
   const dailySleepHoursButton = document.getElementById('daily-sleep-hours');
   const dailySleepQualityButton = document.getElementById('daily-sleep-quality');
   dailySleepHoursButton.innerHTML = `${user.returnHoursSlept()}`;
-  dailySleepDataButton.innerHTML = `${user.returnSleepQuality()}`;
+  dailySleepQualityButton.innerHTML = `${user.returnSleepQuality()}`;
 }
 
 function displayWeeklySleepData(user) {
