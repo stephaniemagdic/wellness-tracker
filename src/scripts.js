@@ -123,7 +123,7 @@ function displayWeeklyHydrationData(user) {
         {
           label: 'Water You Drank',
           data: user.numDailyOuncesDrankInWeek(),
-          backgroundColor: ['#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd', '#702963']
+          backgroundColor: ['#504522', '#504522', '#504522', '#504522', '#504522', '#504522', '#78672f']
         },
       ]
     },
@@ -173,12 +173,12 @@ function displayWeeklySleepData(user) {
         {
           label: 'Hours You Slept',
           data: user.returnHoursSleptByWeek(),
-          backgroundColor: ['#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd','#3e95cd', '#6082B6' ]
+          backgroundColor: ['#a38c3d', '#a38c3d', '#a38c3d', '#a38c3d', '#a38c3d', '#a38c3d', '#d0b34a']
         },
         {
           label: 'Sleep Quality',
           data: user.returnSleepQualityByWeek(),
-          backgroundColor: ['#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#702963' ]
+          backgroundColor: ['#504522', '#504522', '#504522', '#504522', '#504522', '#504522', '#78672f' ]
         }
       ]
     },
