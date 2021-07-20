@@ -74,7 +74,7 @@ Note: You must run both your local server and the fitlit application at the same
 
 * **Repeat: Refresh the page to see a new user's wellness data!:**  
 
-![Responsive Design Gif](https://i.ibb.co/6NfySkx/recording-4.gif)
+![Responsive Design Gif](https://i.ibb.co/DzZs9hd/short.gif)
 
 ### Project Challenges 
  * Not having a well laid out plan for how we wanted each piece of our data to display set us back. After much time working to display some data with charts we realized that data might be better shown in a simpler non-comparative format. This set-back helped us to learn that in furture projects it's important to really plan ahead and have a clearly identified goal before jumping in.
