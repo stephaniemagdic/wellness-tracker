@@ -44,21 +44,21 @@ This project:
 
 ## Instructions for running and viewing
 
-###Set-up:
+### Set-up:
 
 Note: You must run both your local server and the fitlit application at the same time to use this application.
 
-####Step 1: Run your local server.
+#### Step 1: Run your local server.
   * Go to the [fitlit-API](https://github.com/turingschool-examples/fitlit-api) and follow the instructions in the README.md to run your local server.
   * Make sure that the server is running in your terminal by checking that you see the following message in your terminal. `FitLit API is now running on http://localhost:3001 !`
-####Step 2: Run the fitlit application/client.
+#### Step 2: Run the fitlit application/client.
   * You can access the fitlit wellness tracker by `cloning this repository`, navigating to and `opening up your terminal`, and running the command `npm start` in your cloned project directory. This will run the bundle.js file, which will compile and run the application.
   * You should see the following message in your terminal: `running at http://localhost:8080/`
   * Copy and paste this url link (`http://localhost:8080/`) in your browser to view the application. 
   
 `Note`: Make sure to run `npm install` in your terminal after cloning the repository to install dependencies needed for the application to run!
 
-####*How to Navigate our application:**  
+#### *How to Navigate our application:**  
   
 * **See User Info:**  
   * Random users information will display including email the user's name, email address, stride length and step goal!
