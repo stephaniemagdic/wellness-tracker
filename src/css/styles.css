@@ -121,11 +121,6 @@ main {
   border-left: 1px solid #707070;
 }
 
-.sleep-img, .hydration-img {
-  display: flex;
-  align-items: center;
-}
-
 /* RIGHT-BOTTOM */
 .friends-section {
   display: flex;
