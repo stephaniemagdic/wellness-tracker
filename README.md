@@ -82,6 +82,6 @@ Note: You must run both your local server and the fitlit application at the same
 ### Project Wins
  * Throughout the project we learned how to divide and conquer in order to come back to productively use our time togther. We learned a lot from the strategy including what productive and well thought out time solo and paired programming could look like, which included learning and researching concepts before coming together so we could come with well thought-out ideas. We also learned to make the big decisions together and start major pieces of functionality as a team before dividing and conquering.
 
-### Future Itterations
+### Future Iterations
   * In the future, we would like to create a date input field to allow users to search for data on specific days/weeks.
     * Note: Methods and tests are already included in classes in order to sort through and gather this data and display it on the page.
