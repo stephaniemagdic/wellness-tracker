@@ -12,7 +12,7 @@ import './images/sleep.png';
 import './images/week.png';
 import './images/water-drop.png';
 import './images/history-clock-button.png';
-
+import './images/friend.png';
 
 
 
