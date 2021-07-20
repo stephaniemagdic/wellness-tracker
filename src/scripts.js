@@ -5,6 +5,14 @@ import SleepRepository from './SleepRepository';
 import UserSleepData from './UserSleepData';
 import HydrationRepository from './HydrationRepository';
 import UserHydrationData from './UserHydrationData';
+import './images/24-hours.png';
+import './images/all-friends.png';
+import './images/profile-user.png';
+import './images/sleep.png';
+import './images/week.png';
+import './images/water-drop.png';
+
+
 
 
 import { Chart, LinearScale, registerables } from 'chart.js';
@@ -78,12 +86,12 @@ function loadPageInfo() {
 
 //---------------------USER CARD--------------------------------------//
 function displayUserCard(user) {
-  welcomeName.innerHTML = `Hi ${user.returnFirstName()} - welcome to your wellness tracker!`;
+  welcomeName.innerHTML = `Welcome, ${user.returnFirstName()}!`;
   address.innerHTML = `${user.address}`;
   email.innerHTML = `${user.email}`;
-  strideLength.innerHTML = `${user.strideLength} feet`
-  dailyStepGoal.innerHTML = `${user.dailyStepGoal} steps`
-  averageStepGoal.innerHTML = `${allUserData.returnAverageStepGoal()} steps`
+  strideLength.innerHTML = `${user.strideLength}`
+  dailyStepGoal.innerHTML = `${user.dailyStepGoal}`
+  averageStepGoal.innerHTML = `${allUserData.returnAverageStepGoal()}`
 }
 
 
@@ -100,7 +108,7 @@ function displayAllHydrationData(user) {
 function displayDailyHydrationData(user) {
   const dailyHydrationDataButton = document.getElementById('daily-hydration')
   console.log(user.returnOuncesDrank());
-  dailyHydrationDataButton.innerHTML = `${user.returnOuncesDrank()} ounces`;
+  dailyHydrationDataButton.innerHTML = `${user.returnOuncesDrank()}`;
 }
 
 function displayWeeklyHydrationData(user) {
@@ -132,7 +140,7 @@ function displayWeeklyHydrationData(user) {
 
 function displayAverageHydration(user) {
   const averageHydration = document.getElementById('average-hydration')
-  averageHydration.innerHTML = `${user.calculateAverageOuncesConsumed()} ounces`;
+  averageHydration.innerHTML = `${user.calculateAverageOuncesConsumed()}`;
 }
 
 //---------------------SLEEP CHARTS --------------------------------------//
@@ -147,10 +155,10 @@ function displayAllSleepData(user) {
 function displayDailySleepData(user) {
   const dailySleepHoursButton = document.getElementById('daily-sleep-hours');
   const dailySleepQualityButton = document.getElementById('daily-sleep-quality');
-  dailySleepHoursButton.innerHTML = `${user.returnHoursSlept()} hours`;
+  dailySleepHoursButton.innerHTML = `${user.returnHoursSlept()}`;
   console.log(user.returnHoursSlept());
   console.log(user.returnSleepQuality());
-  dailySleepQualityButton.innerHTML = `${user.returnSleepQuality()} points`;
+  dailySleepQualityButton.innerHTML = `${user.returnSleepQuality()}`;
 }
 
 function displayWeeklySleepData(user) {
@@ -190,6 +198,6 @@ function displayWeeklySleepData(user) {
 function displayAllTimeSleepData(user) {
   const allTimeSleepButton = document.getElementById('all-time-sleep');
   const allTimeSleepButton2 = document.getElementById('all-time-sleep-2');
-  allTimeSleepButton.innerHTML = `${user.calculateAverageHoursSlept()} hours`;
-  allTimeSleepButton2.innerHTML = `${user.calculateAverageSleepQuality()} points`;
+  allTimeSleepButton.innerHTML = `${user.calculateAverageHoursSlept()}`;
+  allTimeSleepButton2.innerHTML = `${user.calculateAverageSleepQuality()}`;
 }
