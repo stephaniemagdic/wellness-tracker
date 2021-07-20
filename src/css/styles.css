@@ -72,6 +72,7 @@ aside {
 header {
   font-size: xx-large;
   height: 10%;
+  border-bottom: 1px solid #707070;
 }
 
 address, .email {
@@ -118,7 +119,7 @@ main {
   height: 75%;
 }
 
-.row-header1, .row-header2 {
+.row-header1 {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -132,6 +133,13 @@ main {
 
 .hydration-column, .sleep-column {
   width: 45%;
+  border-left: 1px solid #707070;
+}
+
+.sleep-img, .hydration-img {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* RIGHT-BOTTOM */
@@ -139,6 +147,7 @@ main {
   display: flex;
   /* flex-direction: row; */
   height: 25%;
+  border-top: 1px solid #707070;
 }
 
 .all-friends, .friend-1, .friend-2, .friend-3 {
