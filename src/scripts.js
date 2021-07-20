@@ -25,10 +25,15 @@ const dailyStepGoal = document.querySelector(".daily-step-goal-num")
 const averageStepGoal = document.querySelector(".average-step-goal-num")
 
 //---------------------FETCH CALLS--------------------------------------//
-async function loadPage() {
-  const dataSets = await fetchPageData();
-  generateRepoClasses(dataSets);
-  loadPageInfo();
+// async function loadPage() {
+//   const dataSets = await fetchPageData();
+//   generateRepoClasses(dataSets);
+//   loadPageInfo();
+// }
+
+function loadPage() {
+  Promise.resolve(fetchPageData()).then((data) => generateRepoClasses(data))
+  .then((data) => loadPageInfo());
 }
 
 function fetchPageData() {
@@ -63,7 +68,6 @@ function loadPageInfo() {
   displayAllSleepData(user);
 }
 
-
 //---------------------USER CARD--------------------------------------//
 function displayUserCard(user) {
   welcomeName.innerHTML = `${user.returnFirstName()}`;
@@ -73,7 +77,6 @@ function displayUserCard(user) {
   dailyStepGoal.innerHTML = `${user.dailyStepGoal}`
   averageStepGoal.innerHTML = `${allUserData.returnAverageStepGoal()}`
 }
-
 
 //---------------------HYDRATION CHARTS --------------------------------------//
 function displayAllHydrationData(user) {
@@ -171,7 +174,7 @@ function displayWeeklyHydrationData(user) {
 //---------------------SLEEP CHARTS --------------------------------------//
 function displayAllSleepData(user) {
   const sleepData = allSleepData.returnUserData(user.id);
-  const currentUserSleepData = new UserSleepData(sleepData);
+  const currentUserSleepData = new UserSleepData(allSleepData.returnUserData(user.id));
   displayDailySleepData(currentUserSleepData);
   displayWeeklySleepData(currentUserSleepData);
   displayAllTimeSleepData(currentUserSleepData);
