@@ -25,25 +25,16 @@ const dailyStepGoal = document.querySelector(".daily-step-goal-num")
 const averageStepGoal = document.querySelector(".average-step-goal-num")
 
 //---------------------FETCH CALLS--------------------------------------//
-// async function loadPage() {
-//   const dataSets = await fetchPageData();
-//   generateRepoClasses(dataSets);
-//   loadPageInfo();
-// }
-
 function loadPage() {
   Promise.resolve(fetchPageData()).then((data) => generateRepoClasses(data))
-  .then(() => loadPageInfo());
+    .then(() => displayPageInfo());
 }
 
 function fetchPageData() {
   const userRepoPromise = fetchData('users') 
   const hydrationRepoPromise = fetchData('hydration')  
   const sleepRepoPromise = fetchData('sleep')  
-
-  const apiDataSets = Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then(values => values);
-
-  return apiDataSets;
+  return Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then(values => values);
 }
 
 function generateRepoClasses(dataSets) {
@@ -60,7 +51,7 @@ function fetchData(type) {
 }
 
 //---------------------ALL DISPLAY FUNCTIONS----------------------------------//
-function loadPageInfo() {
+function displayPageInfo() {
   const randomUser = allUserData.userData[Math.floor(Math.random()* allUserData.userData.length)]
   const user = new User(allUserData.returnUserData(randomUser.id));
   displayUserCard(user);
