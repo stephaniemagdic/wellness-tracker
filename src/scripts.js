@@ -57,14 +57,12 @@ function generateRepoClasses(dataSets) {
   allSleepData = new SleepRepository(dataSets[2].sleepData);
 }
 
-async function fetchData(type) {
-  const promise = await fetch(`http://localhost:3001/api/v1/${type}`)
+function fetchData(type) {
+  return fetch(`http://localhost:3001/api/v1/${type}`)
     .then(response => response.json())
     .then(data => data)
-    // .catch(console.log("error!"))
-  return promise;
+    .catch(err => console.log(`ERROR with ${type}: ${err}`))
 }
-
 
 //---------------------ALL DISPLAY FUNCTIONS----------------------------------//
 function loadPageInfo() {
