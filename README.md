@@ -74,9 +74,11 @@ Note: You must run both your local server and the fitlit application at the same
 
 * **Repeat: Refresh the page to see a new user's wellness data!:**  
 
-[Responsive Design Gif: Click to View](https://i.ibb.co/DzZs9hd/short.gif) 
+### [Responsive Design Gif: Click to View](https://i.ibb.co/DzZs9hd/short.gif) 
 
-![Img](https://i.ibb.co/VHpwbty/Screen-Shot-2021-07-20-at-2-57-49-PM.png)
+### Desktop View: 
+![Img](https://i.ibb.co/Kq4Y1tf/Screen-Shot-2021-07-20-at-3-16-06-PM.png)
+### Mobile View 
 ![Img](https://i.ibb.co/JHK42cj/Screen-Shot-2021-07-20-at-2-57-36-PM.png)
 ![Img](https://i.ibb.co/XFVmjMW/Screen-Shot-2021-07-20-at-2-57-01-PM.png)
 
