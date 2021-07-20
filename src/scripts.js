@@ -14,9 +14,6 @@ import './images/water-drop.png';
 import './images/history-clock-button.png';
 import './images/friend.png';
 
-
-
-
 import { Chart, LinearScale, registerables } from 'chart.js';
 Chart.register(...registerables);
 
@@ -35,56 +32,39 @@ const dailyStepGoal = document.querySelector(".daily-step-goal-num")
 const averageStepGoal = document.querySelector(".average-step-goal-num")
 
 //---------------------FETCH CALLS--------------------------------------//
-async function loadPage() {
-  const dataSets = await fetchPageData();
-  generateRepoClasses(dataSets);
-  loadPageInfo();
+function loadPage() {
+  Promise.resolve(fetchPageData()).then((data) => generateRepoClasses(data))
+    .then(() => displayPageInfo());
 }
 
-async function fetchPageData() {
+function fetchPageData() {
   const userRepoPromise = fetchData('users') 
-  // .then(console.log('success'))
-  // .catch(err => console.log("error message"));
-
   const hydrationRepoPromise = fetchData('hydration')  
-    // .then(console.log('success'));
-      //  .catch(err => console.log(console.log(errorMessage));
-
   const sleepRepoPromise = fetchData('sleep')  
-    // .then(console.log('success'));
-      //  .catch(err => /* do something else */);
-
-  const apiDataSets = await Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then(values => values);
-
-  return apiDataSets;
+  return Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then(values => values);
 }
 
 function generateRepoClasses(dataSets) {
-  //TO DO: Refactor-loop through argument to dry up.
-  console.log(dataSets);
   allUserData = new UserRepository(dataSets[0].userData);
   allHydrationData = new HydrationRepository(dataSets[1].hydrationData);
   allSleepData = new SleepRepository(dataSets[2].sleepData);
 }
 
-async function fetchData(type) {
-  const promise = await fetch(`http://localhost:3001/api/v1/${type}`)
+function fetchData(type) {
+  return fetch(`http://localhost:3001/api/v1/${type}`)
     .then(response => response.json())
     .then(data => data)
-    // .catch(console.log("error!"))
-  return promise;
+    .catch(err => console.log(`ERROR with ${type}: ${err}`))
 }
 
-
 //---------------------ALL DISPLAY FUNCTIONS----------------------------------//
-function loadPageInfo() {
+function displayPageInfo() {
   const randomUser = allUserData.userData[Math.floor(Math.random()* allUserData.userData.length)]
   const user = new User(allUserData.returnUserData(randomUser.id));
   displayUserCard(user);
   displayAllHydrationData(user);
   displayAllSleepData(user);
 }
-
 
 //---------------------USER CARD--------------------------------------//
 function displayUserCard(user) {
@@ -95,7 +75,6 @@ function displayUserCard(user) {
   dailyStepGoal.innerHTML = `${user.dailyStepGoal}`
   averageStepGoal.innerHTML = `${allUserData.returnAverageStepGoal()}`
 }
-
 
 //---------------------HYDRATION CHARTS --------------------------------------//
 function displayAllHydrationData(user) {
@@ -109,7 +88,6 @@ function displayAllHydrationData(user) {
 
 function displayDailyHydrationData(user) {
   const dailyHydrationDataButton = document.getElementById('daily-hydration')
-  console.log(user.returnOuncesDrank());
   dailyHydrationDataButton.innerHTML = `${user.returnOuncesDrank()}`;
 }
 
@@ -128,8 +106,6 @@ function displayWeeklyHydrationData(user) {
       ]
     },
     options: {
-      // responsive: true,
-      // maintainAspectRatio: false,
       legend: { display: false },
       title: {
         display: true,
@@ -147,8 +123,7 @@ function displayAverageHydration(user) {
 
 //---------------------SLEEP CHARTS --------------------------------------//
 function displayAllSleepData(user) {
-  const sleepData = allSleepData.returnUserData(user.id);
-  const currentUserSleepData = new UserSleepData(sleepData);
+  const currentUserSleepData = new UserSleepData(allSleepData.returnUserData(user.id));
   displayDailySleepData(currentUserSleepData);
   displayWeeklySleepData(currentUserSleepData);
   displayAllTimeSleepData(currentUserSleepData);
@@ -158,9 +133,7 @@ function displayDailySleepData(user) {
   const dailySleepHoursButton = document.getElementById('daily-sleep-hours');
   const dailySleepQualityButton = document.getElementById('daily-sleep-quality');
   dailySleepHoursButton.innerHTML = `${user.returnHoursSlept()}`;
-  console.log(user.returnHoursSlept());
-  console.log(user.returnSleepQuality());
-  dailySleepQualityButton.innerHTML = `${user.returnSleepQuality()}`;
+  dailySleepDataButton.innerHTML = `${user.returnSleepQuality()}`;
 }
 
 function displayWeeklySleepData(user) {
@@ -178,13 +151,11 @@ function displayWeeklySleepData(user) {
         {
           label: 'Sleep Quality',
           data: user.returnSleepQualityByWeek(),
-          backgroundColor: ['#504522', '#504522', '#504522', '#504522', '#504522', '#504522', '#78672f' ]
+          backgroundColor: ['#504522', '#504522', '#504522', '#504522', '#504522', '#504522', '#78672f']
         }
       ]
     },
     options: {
-      // responsive: true,
-      // maintainAspectRatio: false,
       legend: { display: false },
       title: {
         display: true,

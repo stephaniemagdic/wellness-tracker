@@ -13,7 +13,7 @@ class UserRepository {
       return totalSteps 
     }, 0)
     return average / this.userData.length
-    }
   }
+}
 
 export default UserRepository;
