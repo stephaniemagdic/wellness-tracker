@@ -58,7 +58,7 @@ Note: You must run both your local server and the fitlit application at the same
   
 `Note`: Make sure to run `npm install` in your terminal after cloning the repository to install dependencies needed for the application to run!
 
-#### *How to Navigate our application:**  
+### How to Navigate our application:  
   
 * **See User Info:**  
   * Random users information will display including email the user's name, email address, stride length and step goal!
