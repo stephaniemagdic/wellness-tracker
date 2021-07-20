@@ -68,7 +68,6 @@ img {
 }
 
 .user-profile-section { 
-  /* display: flex; */
   flex-direction: column;
   justify-content: space-between;
   height: 65%;
@@ -167,36 +166,32 @@ main {
    width: 70vw;
   }
 
-  .friends-section {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
   main {
     flex-direction: column;
     width: 100%
   }
-
+  
+  .row-header {
+    display: none;
+  }
+  
   .hydration-column, .sleep-column {
     width: 80vh;
     border: none;
   }
-
-  .row-header {
-    display: none;
-  }
-
+  
   h1 {
     font-size: x-large;
     padding: 30px 0 0 0;
   }
-
-  #all-friends-img {
-    display: none
-  }
-
+  
   .friends-section {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  #all-friends-img {
+    display: none
   }
 }
