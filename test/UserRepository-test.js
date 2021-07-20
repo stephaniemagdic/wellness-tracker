@@ -14,7 +14,7 @@ describe('User Repository', () => {
       16,
       4,
       8
-      ]}, {
+    ]}, {
     id: 2,
     name: 'Jarvis Considine',
     address: '30086 Kathryn Port, Ciceroland NE 07273',
@@ -26,7 +26,7 @@ describe('User Repository', () => {
       18,
       24,
       19
-      ]}, {
+    ]}, {
     id: 3,
     name: 'Herminia Witting',
     address: '85823 Bosco Fork, East Oscarstad MI 85126-5660',
@@ -38,8 +38,8 @@ describe('User Repository', () => {
       11,
       42,
       33
-      ]
-    }]
+    ]
+  }]
 
   beforeEach(() => {
     userRepository = new UserRepository(allUserData)

@@ -31,27 +31,17 @@ async function loadPage() {
   loadPageInfo();
 }
 
-async function fetchPageData() {
+function fetchPageData() {
   const userRepoPromise = fetchData('users') 
-  // .then(console.log('success'))
-  // .catch(err => console.log("error message"));
-
   const hydrationRepoPromise = fetchData('hydration')  
-    // .then(console.log('success'));
-      //  .catch(err => console.log(console.log(errorMessage));
-
   const sleepRepoPromise = fetchData('sleep')  
-    // .then(console.log('success'));
-      //  .catch(err => /* do something else */);
 
-  const apiDataSets = await Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then(values => values);
+  const apiDataSets = Promise.all([userRepoPromise, hydrationRepoPromise, sleepRepoPromise]).then(values => values);
 
   return apiDataSets;
 }
 
 function generateRepoClasses(dataSets) {
-  //TO DO: Refactor-loop through argument to dry up.
-  console.log(dataSets);
   allUserData = new UserRepository(dataSets[0].userData);
   allHydrationData = new HydrationRepository(dataSets[1].hydrationData);
   allSleepData = new SleepRepository(dataSets[2].sleepData);
@@ -191,8 +181,6 @@ function displayDailySleepData(user) {
   const dailySleepHoursButton = document.getElementById('daily-sleep-hours');
   const dailySleepDataButton = document.getElementById('daily-sleep-quality');
   dailySleepHoursButton.innerHTML = `${user.returnHoursSlept()}`;
-  console.log(user.returnHoursSlept());
-  console.log(user.returnSleepQuality());
   dailySleepDataButton.innerHTML = `${user.returnSleepQuality()}`;
 }
 
@@ -216,8 +204,6 @@ function displayWeeklySleepData(user) {
       ]
     },
     options: {
-      // responsive: true,
-      // maintainAspectRatio: false,
       legend: { display: false },
       title: {
         display: true,
