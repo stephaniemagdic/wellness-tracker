@@ -6,19 +6,18 @@
 
 ## Project Description
 
-Use our app along with and run a local server from your machine by following the set-up instructions to fetch mock user data to populate the page with new user data everytime the page is loaded.
+Run our application and spin up a local server to fetch mock user data to populate a wellness tracker page with a random user's data on page load! 
 
 This project:
-  - This project implements the fetch API to access data from a local server.
-  - This project uses array prototype methods.
-  - /// responsive.
-  - This project uses the fetch API to make network requests to API endpoints to retrieve and manipulate data.
-
+  - implements the fetch API to access data from a local server.
+  - uses array prototype methods to itterate through and manipulate data.
+  - uses the Fetch API to make network requests to API endpoints in order to retrieve data.
  
 ### Built-By:
 
-[Stephanie Magdic](https://github.com/stephaniemagdic)
-[Sarah Rudy](https://github.com/sarahrudy)
+* [Stephanie Magdic](https://github.com/stephaniemagdic)
+
+* [Sarah Rudy](https://github.com/sarahrudy)
 
 
 ### Technologies Used 
@@ -29,7 +28,6 @@ This project:
   * [Webpack](https://www.npmjs.com/package/webpack): a helpful developer tool (npm package we install as a dev dependency)
 * Mocha test framework and Chai TDD assertion library
 
-
 ### Architecture
 
 * dist directory
@@ -38,7 +36,7 @@ This project:
 * src directory
   * ES6 class files
     * Class Structure Example:
-      * UserSleepRepository: holds sleep data for `all` users. Has methods that uses/manipulates just all users data. 
+      * UserSleepRepository: holds sleep data for `all` users. Has methods that uses/manipulates all users data. 
       * UserSleepData: holds sleep data for `one` user. Has methods that uses/manipulates just one user's data.  
   * scripts.js: holds our application logic, including fetching data from our local server and manipulating the dom.
 * test directory
@@ -46,56 +44,44 @@ This project:
 
 ## Instructions for running and viewing
 
-###Set-up:
+### Set-up:
 
 Note: You must run both your local server and the fitlit application at the same time to use this application.
 
-####Step 1: Run your local server.
+#### Step 1: Run your local server.
   * Go to the [fitlit-API](https://github.com/turingschool-examples/fitlit-api) and follow the instructions in the README.md to run your local server.
-  * Make sure that server is running in your terminal by checking that you see the following message in your terminal.
-####Step 2: Run the fitlit application/client.
-  * You can access the fitlit wellness tracker by `cloning this repository`, navigating to and `opening up your terminal`, and running the command `npm start` in your cloned project directory. This will run the bundle.js file, which will ... (//wording)
-  * You will see the following message in your terminal: 
-  * Copy and paste that link in your browser to view the application. 
+  * Make sure that the server is running in your terminal by checking that you see the following message in your terminal. `FitLit API is now running on http://localhost:3001 !`
+#### Step 2: Run the fitlit application/client.
+  * You can access the fitlit wellness tracker by `cloning this repository`, navigating to and `opening up your terminal`, and running the command `npm start` in your cloned project directory. This will run the bundle.js file, which will compile and run the application.
+  * You should see the following message in your terminal: `running at http://localhost:8080/`
+  * Copy and paste this url link (`http://localhost:8080/`) in your browser to view the application. 
   
-Note: Make sure to run `npm install` in your terminal after cloning the repository to install dependencies needed for the application to run!
-To exit node on a mac, choose `cntrl + c`!
+`Note`: Make sure to run `npm install` in your terminal after cloning the repository to install dependencies needed for the application to run!
 
-
-* **How to Navigate our application:**  
+### How to Navigate our application:  
   
-![x](x)
+* **See User Info:**  
+  * Random users information will display including email the user's name, email address, stride length and step goal!
 
-* **See User Info Card Data:**  
-  * xx
-  * xx
+* **Average Step Goal of All Users:**  
+  * The cacluation of the average step goal of all users.
 
 * **View Hydration Data:** 
-  * xx
-  * xx
-
-![x](x)
+  * The current random user's daily ounces of water consumed, weekly water consumtion, and the user's average consumption.
 
 * **View Sleep Data!:**  
-  * xx
-  * xx
+  * Daily, weekly, and average hours slept and sleep quality.
 
-* ** xx :**  
-  * xx
-  * xx
+* **Repeat: Refresh the page to see a new user's wellness data!:**  
 
-* **Refresh the page to see a new user's wellness data!:**  
-  * xx
-  * xx
+
 
 ### Project Challenges 
- * xx
- * xx
+ * Not having a well laid out plan for how we wanted each piece of our data to display set us back. After much time working to display some data with charts we realized that data might be better shown in a simpler non-comparative format. This set-back helped us to learn that in furture projects its important to really plan ahead and have a clearly identified goal before jumping in.
  
 ### Project Wins
- * xx
- * xx
+ * Throughout the project we learned how to divide and conquer in order to come back to productively use our time togther. We learned a lot from the strategy including what productive and well thought out time solo and paired programming could look like, which included learning and researching concepts before coming together so we could come with well thought-out ideas. We also learned to make the big decisions together and start major pieces of functionality as a team before dividing and conquering.
 
 ### Future Itterations
   * In the future, we would like to create a date input field to allow users to search for data on specific days/weeks.
-    * Note: Methods and tests are included in classes in order to sort through and gather this data and display it on the page.
+    * Note: Methods and tests are already included in classes in order to sort through and gather this data and display it on the page.
