@@ -77,10 +77,10 @@ Note: You must run both your local server and the fitlit application at the same
 
 
 ### Project Challenges 
- * Not having a well laid out plan for how we wanted each piece of our data to display set us back. After much time working to display some data with charts we realized that data might be better shown in a simpler non-comparative format. This set-back helped us to learn that in furture projects its important to really plan ahead and have a clearly identified goal before jumping in.
+ * Not having a well laid out plan for how we wanted each piece of our data to display set us back. After much time working to display some data with charts we realized that data might be better shown in a simpler non-comparative format. This set-back helped us to learn that in furture projects it's important to really plan ahead and have a clearly identified goal before jumping in.
  
 ### Project Wins
- * Throughout the project we learned how to divide and conquer in order to come back to productively use our time togther. We learned a lot from the strategy including what productive and well thought out time solo and paired programming could look like, which included learning and researching concepts before coming together so we could come with well thought-out ideas. We also learned to make the big decisions together and start major pieces of functionality as a team before dividing and conquering.
+ * Throughout the project we learned how to divide and conquer in order to come back to productively use our time togther. We learned a lot from the strategy including what productive and well-thought-out solo and paired programming could look like, which included learning and researching concepts before coming together so we could come with well thought-out ideas. We also learned to make the big decisions together and start major pieces of functionality as a team before dividing and conquering.
 
 ### Future Iterations
   * In the future, we would like to create a date input field to allow users to search for data on specific days/weeks.
