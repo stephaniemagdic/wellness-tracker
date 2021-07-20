@@ -5,6 +5,16 @@ import SleepRepository from './SleepRepository';
 import UserSleepData from './UserSleepData';
 import HydrationRepository from './HydrationRepository';
 import UserHydrationData from './UserHydrationData';
+import './images/24-hours.png';
+import './images/all-friends.png';
+import './images/profile-user.png';
+import './images/sleep.png';
+import './images/week.png';
+import './images/water-drop.png';
+import './images/history-clock-button.png';
+import './images/friend.png';
+
+
 
 
 import { Chart, LinearScale, registerables } from 'chart.js';
@@ -78,7 +88,7 @@ function loadPageInfo() {
 
 //---------------------USER CARD--------------------------------------//
 function displayUserCard(user) {
-  welcomeName.innerHTML = `${user.returnFirstName()}`;
+  welcomeName.innerHTML = `Welcome, ${user.returnFirstName()}!`;
   address.innerHTML = `${user.address}`;
   email.innerHTML = `${user.email}`;
   strideLength.innerHTML = `${user.strideLength}`
@@ -94,26 +104,13 @@ function displayAllHydrationData(user) {
 
   displayDailyHydrationData(currentUserHydrationData);
   displayWeeklyHydrationData(currentUserHydrationData);
-  // displayAllTimeHydrationData(currentUserHydrationData);
+  displayAverageHydration(currentUserHydrationData);
 }
 
 function displayDailyHydrationData(user) {
-  let dailyHydrationDataChart = document.getElementById('daily-hydration')
-  let dailyHydrationDataChartDisplay = new Chart(dailyHydrationDataChart, {
-    type: 'bar',
-    data: {
-      labels: ['Ounces Consumed', '% of Daily Goal'], // add % of Daily Goal?
-      datasets: [{
-        label: 'By Day',
-        data: [
-          user.returnOuncesDrank(),
-        ],
-        backgroundColor: ['#3e95cd'],
-      }],
-    }
-  });
-
-  dailyHydrationDataChart.innerHTML = `${dailyHydrationDataChartDisplay}`;
+  const dailyHydrationDataButton = document.getElementById('daily-hydration')
+  console.log(user.returnOuncesDrank());
+  dailyHydrationDataButton.innerHTML = `${user.returnOuncesDrank()}`;
 }
 
 function displayWeeklyHydrationData(user) {
@@ -124,15 +121,10 @@ function displayWeeklyHydrationData(user) {
       labels: ['', '', '', '', '', '', 'Today'],
       datasets: [
         {
-          label: 'Water Consumed Last Week',
+          label: 'Water You Drank',
           data: user.numDailyOuncesDrankInWeek(),
-          backgroundColor: ['#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd', '#6082B6']
+          backgroundColor: ['#504522', '#504522', '#504522', '#504522', '#504522', '#504522', '#78672f']
         },
-        // {
-        //   label: 'Parched or Hydrated',
-        //   data: user.returnHydrationLevelByWeek(),
-        //   backgroundColor: ['#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#702963']
-        // }
       ]
     },
     options: {
@@ -145,40 +137,13 @@ function displayWeeklyHydrationData(user) {
         responsive: true
       }
     }
-  });
-
-  weeklyHydrationChart.innerHTML = `${weeklyHydrationDataChartDisplay}`;
+  }); 
 }
-// we don't technically need this chart?
-// function displayAllTimeHydrationData(user) {
-//   let allTimeHydrationChart = document.getElementById('all-time-hydration')
-//   let allTimeHydrationChartDisplay = new Chart(allTimeHydrationChart, {
-//     type: 'bar',
-//     data: {
-//       labels: ['Average Ounces Slept', 'Average Hydration Quality'],
-//       datasets: [{
-//         label: 'Overall Hydration',
-//         data: [
-//           user.calculateAverageOuncesConsumed(),
-//           user.calculateAverageHydrationLevel()
-//         ],
-//         backgroundColor: ['#3e95cd', '#8e5ea2'],
-//       }],
-//       options: {
-//         // responsive: true,
-//         // maintainAspectRatio: false,
-//         legend: { display: false },
-//         title: {
-//           display: true,
-//           text: 'Overall Hydration',
-//           responsive: true
-//         }
-//       }
-//     }
-//   });
 
-//   allTimeHydrationChart.innerHTML = `${allTimeHydrationChartDisplay}`;
-// }
+function displayAverageHydration(user) {
+  const averageHydration = document.getElementById('average-hydration')
+  averageHydration.innerHTML = `${user.calculateAverageOuncesConsumed()}`;
+}
 
 //---------------------SLEEP CHARTS --------------------------------------//
 function displayAllSleepData(user) {
@@ -191,11 +156,11 @@ function displayAllSleepData(user) {
 
 function displayDailySleepData(user) {
   const dailySleepHoursButton = document.getElementById('daily-sleep-hours');
-  const dailySleepDataButton = document.getElementById('daily-sleep-quality');
+  const dailySleepQualityButton = document.getElementById('daily-sleep-quality');
   dailySleepHoursButton.innerHTML = `${user.returnHoursSlept()}`;
   console.log(user.returnHoursSlept());
   console.log(user.returnSleepQuality());
-  dailySleepDataButton.innerHTML = `${user.returnSleepQuality()}`;
+  dailySleepQualityButton.innerHTML = `${user.returnSleepQuality()}`;
 }
 
 function displayWeeklySleepData(user) {
@@ -206,14 +171,14 @@ function displayWeeklySleepData(user) {
       labels: [ '', '', '', '', '', '', 'Today'],
       datasets: [
         {
-          label: 'Hours Slept',
+          label: 'Hours You Slept',
           data: user.returnHoursSleptByWeek(),
-          backgroundColor: ['#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd', '#3e95cd','#3e95cd', '#6082B6' ]
+          backgroundColor: ['#a38c3d', '#a38c3d', '#a38c3d', '#a38c3d', '#a38c3d', '#a38c3d', '#d0b34a']
         },
         {
           label: 'Sleep Quality',
           data: user.returnSleepQualityByWeek(),
-          backgroundColor: ['#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#8e5ea2', '#702963' ]
+          backgroundColor: ['#504522', '#504522', '#504522', '#504522', '#504522', '#504522', '#78672f' ]
         }
       ]
     },

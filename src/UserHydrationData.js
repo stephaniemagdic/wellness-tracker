@@ -13,13 +13,13 @@ class UserHydrationData {
     return weekData.map(day => day.numOunces)
   }
 
-  // calculateAverageOuncesConsumed() {
-  //   const totalOuncesDrank = this.hydroData.returnOuncesDrank(date) 
-  // }
-
-  // calculateOverallHydration() {
-
-  // }
+  calculateAverageOuncesConsumed() {
+    const totalOuncesConsumed = this.hydroData.reduce((sum, hydroItem) => {
+      return sum + hydroItem.numOunces;
+    }, 0);
+    return parseFloat((totalOuncesConsumed / this.hydroData.length).toFixed(1));
+  }
 }
 
+ 
 export default UserHydrationData;

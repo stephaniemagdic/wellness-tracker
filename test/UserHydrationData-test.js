@@ -81,5 +81,10 @@ describe('UserHydrationData', () => {
     const numDailyOuncesDrankInWeek = userHydrationData.numDailyOuncesDrankInWeek('2019/06/24');
     expect(numDailyOuncesDrankInWeek).to.deep.equal([61, 91, 50, 50, 43, 39, 61]);
   })
+
+  it('should return average ounces drank', () => {
+    const dailyAverage = userHydrationData.calculateAverageOuncesConsumed(1);
+    expect(dailyAverage).to.equal(59.7);
+  });
 })
 
