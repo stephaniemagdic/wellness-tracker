@@ -23,6 +23,8 @@ This project:
 ### Technologies Used 
 
 * JavaScript (ECMAScript 2009)
+* HTML
+* CSS
 * NPM packages/dependencies: 
   * [chart.js](https://www.chartjs.org/)
   * [Webpack](https://www.npmjs.com/package/webpack): a helpful developer tool (npm package we install as a dev dependency)
