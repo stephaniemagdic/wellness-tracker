@@ -77,7 +77,8 @@ Note: You must run both your local server and the fitlit application at the same
 
 ### Snapshot Examples of Responsive Design
  ###### Please run the application to view the entire dashboard.
-#### [Responsive Design Gif: Click to View](https://i.ibb.co/DzZs9hd/short.gif) 
+#### [Generate Random User on Page Load Gif: Click to View](https://i.ibb.co/DzZs9hd/short.gif) 
+#### [Responsive Design Gif: Click to View](https://i.ibb.co/vDZpXcZ/mobile-scroll.gif) 
 
 #### Desktop View: 
 ![Img](https://i.ibb.co/Kq4Y1tf/Screen-Shot-2021-07-20-at-3-16-06-PM.png)
