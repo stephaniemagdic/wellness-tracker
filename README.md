@@ -23,7 +23,7 @@ This project:
 ### Technologies Used 
 
 * JavaScript (ECMAScript 2009)
-* HTML
+* HTML5
 * CSS
 * NPM packages/dependencies: 
   * [chart.js](https://www.chartjs.org/)
