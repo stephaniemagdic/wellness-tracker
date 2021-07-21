@@ -35,6 +35,7 @@ const averageStepGoal = document.querySelector(".average-step-goal-num")
 function loadPage() {
   Promise.resolve(fetchPageData()).then((data) => generateRepoClasses(data))
     .then(() => displayPageInfo());
+    console.log("test")
 }
 
 function fetchPageData() {

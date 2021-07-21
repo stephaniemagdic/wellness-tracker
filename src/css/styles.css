@@ -68,6 +68,11 @@ img {
   max-width: 50px;
 }
 
+.hydro-img-container, .sleep-img-container {
+  display: flex;
+  justify-content: center;
+}
+
 .user-profile-section { 
   flex-direction: column;
   justify-content: space-between;
