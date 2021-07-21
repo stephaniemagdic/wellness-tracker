@@ -119,6 +119,7 @@ main {
 .top-row, .middle-row, bottom-row {
   justify-content: stretch;
   height: 30%;
+  flex: 3;
 }
 
 .hydration-column, .sleep-column {
@@ -149,6 +150,13 @@ main {
     padding: 10px;
   }
 
+  button {
+    width: 40px;
+    height: 40px;
+    line-height: 50px;
+    overflow: hidden;
+  }
+
   header {
     font-size: x-large;
   }
@@ -160,6 +168,7 @@ main {
 
   canvas {
     flex: 1;
+    margin-top: 20px;
   }
 
   aside {
